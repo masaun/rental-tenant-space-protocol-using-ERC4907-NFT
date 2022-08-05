@@ -1,8 +1,8 @@
 import { assert, expect } from "chai"
 import { BigNumber } from "ethers"
 import { deployments, network, ethers } from "hardhat"
-import { developmentChains } from "../../helper-hardhat-config"
-import { KeepersCounter } from "../../typechain"
+import { developmentChains } from "../../../helper-hardhat-config"
+import { KeepersCounter } from "../../../typechain"
 
 !developmentChains.includes(network.name)
   ? describe.skip

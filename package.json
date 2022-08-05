@@ -1,11 +1,11 @@
 {
-  "name": "hardhat-starter-kit",
+  "name": "chainlink-encode-hack",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "compile": "hardhat compile",
-    "test": "hardhat test ./test/unit/*.spec.ts --network hardhat",
-    "test-staging": "hardhat test ./test/staging/*.spec.ts --network rinkeby",
+    "test-unit:chainlink-examples": "hardhat test ./test/chainlink-examples/unit/*.spec.ts --network hardhat",
+    "test-staging:chainlink-examples": "hardhat test ./test/chainlink-examples/staging/*.spec.ts --network rinkeby",
     "lint": "solhint 'contracts/*.sol'",
     "lint:fix": "solhint 'contracts/**/*.sol' --fix",
     "format": "prettier --write .",

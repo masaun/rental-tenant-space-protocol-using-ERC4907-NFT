@@ -1,8 +1,8 @@
 import { assert, expect } from "chai"
 import { BigNumber } from "ethers"
 import { network, deployments, ethers } from "hardhat"
-import { developmentChains, networkConfig } from "../../helper-hardhat-config"
-import { RandomNumberConsumerV2, VRFCoordinatorV2Mock } from "../../typechain"
+import { developmentChains, networkConfig } from "../../../helper-hardhat-config"
+import { RandomNumberConsumerV2, VRFCoordinatorV2Mock } from "../../../typechain"
 
 !developmentChains.includes(network.name)
   ? describe.skip

@@ -1,6 +1,6 @@
-import { developmentChains } from "../../helper-hardhat-config"
+import { developmentChains } from "../../../helper-hardhat-config"
 import { network, ethers } from "hardhat"
-import { RandomNumberConsumerV2 } from "../../typechain"
+import { RandomNumberConsumerV2 } from "../../../typechain"
 import { assert } from "chai"
 import { BigNumber, constants } from "ethers"
 

@@ -1,9 +1,9 @@
 import { developmentChains, networkConfig } from "../../helper-hardhat-config"
 import { network, ethers, run } from "hardhat"
-import { APIConsumer } from "../../typechain"
+import { APIConsumer } from "../../../typechain"
 import { assert } from "chai"
 import { BigNumber, constants } from "ethers"
-import { autoFundCheck } from "../../helper-functions"
+import { autoFundCheck } from "../../../helper-functions"
 
 developmentChains.includes(network.name)
   ? describe.skip
