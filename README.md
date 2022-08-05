@@ -1,3 +1,21 @@
+# Chainlink Encode Hack (NOTE: Temporary Project Name)
+
+## Test (Mainnet-forking test)
+- Scenario test
+```
+yarn test-scenario:chainlink-examples
+```
+
+<br>
+
+- Unit test
+```
+yarn test-unit:chainlink-examples
+```
+
+
+<hr>
+
 <br/>
 <p align="center">
 <a href="https://chain.link" target="_blank">

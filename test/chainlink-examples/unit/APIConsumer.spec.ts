@@ -2,8 +2,8 @@ import { numToBytes32 } from "@chainlink/test-helpers/dist/src/helpers"
 import { assert, expect } from "chai"
 import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
 import { network, deployments, ethers, run } from "hardhat"
-import { developmentChains } from "../../helper-hardhat-config"
-import { APIConsumer, LinkToken, MockOracle } from "../../typechain"
+import { developmentChains } from "../../../helper-hardhat-config"
+import { APIConsumer, LinkToken, MockOracle } from "../../../typechain"
 
 !developmentChains.includes(network.name)
   ? describe.skip

@@ -1,8 +1,8 @@
 import { assert } from "chai"
 import { BigNumber } from "ethers"
 import { deployments, network, ethers } from "hardhat"
-import { developmentChains } from "../../helper-hardhat-config"
-import { MockV3Aggregator, PriceConsumerV3 } from "../../typechain"
+import { developmentChains } from "../../../helper-hardhat-config"
+import { MockV3Aggregator, PriceConsumerV3 } from "../../../typechain"
 
 !developmentChains.includes(network.name)
   ? describe.skip
