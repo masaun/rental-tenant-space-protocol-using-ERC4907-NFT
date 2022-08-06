@@ -1,18 +1,24 @@
 # Chainlink Encode Hack (NOTE: Temporary Project Name)
 
 ## Test (Mainnet-forking test)
-- Scenario test
+- Scenario test (chainlink-examples)
 ```
 yarn test-scenario:chainlink-examples
 ```
 
 <br>
 
-- Unit test
+- Unit test (chainlink-examples)
 ```
 yarn test-unit:chainlink-examples
 ```
 
+<br>
+
+- Unit test (ERC4907)
+```
+yarn test-unit:ERC4907
+```
 
 <hr>
 

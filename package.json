@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "compile": "hardhat compile",
+    "test-unit:ERC4907": "hardhat test ./test/ERC4907/test.js",
     "test-unit:chainlink-examples": "hardhat test ./test/chainlink-examples/unit/*.spec.ts --network hardhat",
     "test-staging:chainlink-examples": "hardhat test ./test/chainlink-examples/staging/*.spec.ts --network rinkeby",
     "lint": "solhint 'contracts/*.sol'",
