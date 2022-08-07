@@ -38,6 +38,7 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.7.2",
     "@appliedblockchain/chainlink-contracts": "0.0.4",
     "@appliedblockchain/chainlink-plugins-fund-link": "0.0.1",
     "@chainlink/contracts": "^0.4.0",
