@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "compile": "hardhat compile",
+    "test-unit:ERC4907": "hardhat test ./test/ERC4907/test.ts",
     "test-unit:chainlink-examples": "hardhat test ./test/chainlink-examples/unit/*.spec.ts --network hardhat",
     "test-staging:chainlink-examples": "hardhat test ./test/chainlink-examples/staging/*.spec.ts --network rinkeby",
     "lint": "solhint 'contracts/*.sol'",
@@ -37,6 +38,7 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.7.2",
     "@appliedblockchain/chainlink-contracts": "0.0.4",
     "@appliedblockchain/chainlink-plugins-fund-link": "0.0.1",
     "@chainlink/contracts": "^0.4.0",
