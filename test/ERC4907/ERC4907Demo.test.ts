@@ -28,7 +28,7 @@ describe("test of ERC4907 Demo", async function () {
         //@dev - Get signers of each accounts
         [owner, alice, bob] = await ethers.getSigners()
 
-        //@dev - Create contrac
+        //@dev - Deploy the ERC4907Demo contract
         const ERC4907Demo = await ethers.getContractFactory("ERC4907Demo")
         instance = <ERC4907Demo>await ERC4907Demo.deploy("T", "T")
     })
@@ -41,7 +41,7 @@ describe("test of ERC4907 Demo", async function () {
         console.log(`Alice: ${ Alice }`)
         console.log(`Bob: ${ Bob }`)
 
-        const demo: any = instance
+        const demo: ERC4907Demo = instance
 
         //@dev - Mint a ERC4907-based NFT
         await demo.connect(owner).mint(1, Alice)
