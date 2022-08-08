@@ -1,7 +1,11 @@
 import { ethers } from "hardhat"
+import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
-import { toWei, fromWei, getEventLog } from "../ethersjs-helper/ethersjsHelper"
 import { assert } from "chai"
+
+import { toWei, fromWei, getEventLog } from "../ethersjs-helper/ethersjsHelper"
+
+import { ERC4907Demo } from "../../typechain"
 
 
 /**
@@ -10,12 +14,13 @@ import { assert } from "chai"
 describe("test of ERC4907", async function () {
     
     //@dev - Signers
-    let owner: any
-    let alice: any 
-    let bob: any
+    let owner: SignerWithAddress
+    let alice: SignerWithAddress
+    let bob: SignerWithAddress
 
     //@dev - Smart contract instances
     let instance: any
+    //let instance: ERC4907Demo
 
     before(async () => {
         //@dev - Get signers of each accounts
