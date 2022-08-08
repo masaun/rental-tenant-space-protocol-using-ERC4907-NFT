@@ -11,9 +11,9 @@ import { ERC4907Demo } from "../../typechain"
 
 
 /**
- * @notice - This is a test of ERC4907 with Typechain
+ * @notice - This is a test of ERC4907Demo.sol with Typechain
  */ 
-describe("test of ERC4907", async function () {
+describe("test of ERC4907 Demo", async function () {
     
     //@dev - Signers
     let owner: SignerWithAddress
@@ -21,8 +21,8 @@ describe("test of ERC4907", async function () {
     let bob: SignerWithAddress
 
     //@dev - Smart contract instances
-    let instance: any
-    //let instance: ERC4907Demo
+    let instance: ERC4907Demo
+    //let instance: any
 
     before(async () => {
         //@dev - Get signers of each accounts
@@ -30,7 +30,7 @@ describe("test of ERC4907", async function () {
 
         //@dev - Create contrac
         const ERC4907Demo = await ethers.getContractFactory("ERC4907Demo")
-        instance = await ERC4907Demo.deploy("T", "T")
+        instance = <ERC4907Demo>await ERC4907Demo.deploy("T", "T")
     })
 
     it("should set user to Bob", async () => {
