@@ -15,9 +15,9 @@ yarn test-unit:chainlink-examples
 
 <br>
 
-- Unit test (ERC4907)
+- Unit test (ERC4907 Demo)
 ```
-yarn test-unit:ERC4907
+yarn test-unit:ERC4907Demo
 ```
 
 <hr>

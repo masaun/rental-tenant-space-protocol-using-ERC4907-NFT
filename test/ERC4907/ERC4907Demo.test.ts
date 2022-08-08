@@ -36,12 +36,12 @@ describe("test of ERC4907", async function () {
     it("should set user to Bob", async () => {
         //@dev - Get initial balances of first and second account.
 
-        const Alice = alice.address
-        const Bob = bob.address
+        const Alice: string = alice.address
+        const Bob: string = bob.address
         console.log(`Alice: ${ Alice }`)
         console.log(`Bob: ${ Bob }`)
 
-        const demo = instance;
+        const demo: any = instance
 
         //@dev - Mint a ERC4907-based NFT
         await demo.connect(owner).mint(1, Alice)
