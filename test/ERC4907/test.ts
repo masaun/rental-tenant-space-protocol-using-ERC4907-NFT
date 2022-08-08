@@ -3,8 +3,10 @@ import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
 import { assert } from "chai"
 
+//@dev - Helper of ethers.js
 import { toWei, fromWei, getEventLog } from "../ethersjs-helper/ethersjsHelper"
 
+//@dev - Contract instances in Typechain
 import { ERC4907Demo } from "../../typechain"
 
 
@@ -36,6 +38,8 @@ describe("test of ERC4907", async function () {
 
         const Alice = alice.address
         const Bob = bob.address
+        console.log(`Alice: ${ Alice }`)
+        console.log(`Bob: ${ Bob }`)
 
         const demo = instance;
 
@@ -51,14 +55,16 @@ describe("test of ERC4907", async function () {
 
         //@dev - Get a user who is set in the ERC4907-based NFT
         let user_1 = await demo.userOf(1)
-
+        console.log(`User of NFT 1: ${ user_1 }`)
         assert.equal(
             user_1,
             Bob,
             "User of NFT 1 should be Bob"
         )
 
+        //@dev - Get a owner who is set in the ERC4907-based NFT
         let owner_1 = await demo.ownerOf(1)
+        console.log(`Owner of NFT 1: ${ owner_1 }`)
         assert.equal(
             owner_1,
             Alice ,
