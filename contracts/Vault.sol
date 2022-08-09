@@ -24,17 +24,15 @@ contract Vault {
         erc4907BasedNFT = _erc4907BasedNFT;
     }
 
-    function _mint(address _to, uint _shares) private {
-        totalSupply += _shares;
-        balanceOf[_to] += _shares;
-    }
-
-    function _burn(address _from, uint _shares) private {
-        totalSupply -= _shares;
-        balanceOf[_from] -= _shares;
-    }
-
+    /**
+     * @notice - Deposit underlyingToken and a ERC4907-based NFT
+     * @param _amount - underlyingToken amount to be deposited
+     */ 
     function deposit(uint _amount) external {
+        //@dev - Deposit a ERC4907-based NFT
+        uint256 tokenId = 0;
+        erc4907BasedNFT.transferFrom(msg.sender, address(this), tokenId);
+
         //@dev - Stake underlying tokens into the Staking contract
         staking.stake(_amount);
 
@@ -74,7 +72,26 @@ contract Vault {
         _burn(msg.sender, _shares);
         underlyingToken.transfer(msg.sender, amount);
     }
+
+
+    ///----------------------
+    /// Internal methods
+    ///----------------------
+    function _mint(address _to, uint _shares) private {
+        totalSupply += _shares;
+        balanceOf[_to] += _shares;
+    }
+
+    function _burn(address _from, uint _shares) private {
+        totalSupply -= _shares;
+        balanceOf[_from] -= _shares;
+    }
+
 }
+
+
+
+
 
 interface IERC20 {
     function totalSupply() external view returns (uint);
