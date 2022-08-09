@@ -18,5 +18,4 @@ contract ERC4907BasedNFTFactory {
         erc4907BasedNFTs.push(address(erc4907BasedNFT));
     }
 
-} 
-
+}

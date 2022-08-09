@@ -2,15 +2,26 @@
 pragma solidity ^0.8.0;
 //pragma solidity ^0.8.13;
 
+import { Staking } from "./Staking.sol";
+import { ERC4907BasedNFT } from "./ERC4907BasedNFT.sol";
 
+
+/**
+ * @title - The vault contract
+ */ 
 contract Vault {
-    IERC20 public immutable token;
+
+    IERC20 public immutable underlyingToken;
+    Staking public immutable staking;
+    ERC4907BasedNFT public immutable erc4907BasedNFT;
 
     uint public totalSupply;
     mapping(address => uint) public balanceOf;
 
-    constructor(address _token) {
-        token = IERC20(_token);
+    constructor(address _underlyingToken, Staking _staking, ERC4907BasedNFT _erc4907BasedNFT) {
+        underlyingToken = IERC20(_underlyingToken);
+        staking = _staking;
+        erc4907BasedNFT = _erc4907BasedNFT;
     }
 
     function _mint(address _to, uint _shares) private {
@@ -26,7 +37,7 @@ contract Vault {
     function deposit(uint _amount) external {
         /*
         a = amount
-        B = balance of token before deposit
+        B = balance of underlyingToken before deposit
         T = total supply
         s = shares to mint
 
@@ -38,17 +49,17 @@ contract Vault {
         if (totalSupply == 0) {
             shares = _amount;
         } else {
-            shares = (_amount * totalSupply) / token.balanceOf(address(this));
+            shares = (_amount * totalSupply) / underlyingToken.balanceOf(address(this));
         }
 
         _mint(msg.sender, shares);
-        token.transferFrom(msg.sender, address(this), _amount);
+        underlyingToken.transferFrom(msg.sender, address(this), _amount);
     }
 
     function withdraw(uint _shares) external {
         /*
         a = amount
-        B = balance of token before withdraw
+        B = balance of underlyingToken before withdraw
         T = total supply
         s = shares to burn
 
@@ -56,9 +67,9 @@ contract Vault {
 
         a = sB / T
         */
-        uint amount = (_shares * token.balanceOf(address(this))) / totalSupply;
+        uint amount = (_shares * underlyingToken.balanceOf(address(this))) / totalSupply;
         _burn(msg.sender, _shares);
-        token.transfer(msg.sender, amount);
+        underlyingToken.transfer(msg.sender, amount);
     }
 }
 
