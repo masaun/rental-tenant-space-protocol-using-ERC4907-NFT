@@ -18,8 +18,8 @@ contract Vault {
     uint public totalSupply;
     mapping(address => uint) public balanceOf;
 
-    constructor(address _underlyingToken, Staking _staking, ERC4907BasedNFT _erc4907BasedNFT) {
-        underlyingToken = IERC20(_underlyingToken);
+    constructor(IERC20 _underlyingToken, Staking _staking, ERC4907BasedNFT _erc4907BasedNFT) {
+        underlyingToken = _underlyingToken;
         staking = _staking;
         erc4907BasedNFT = _erc4907BasedNFT;
     }
