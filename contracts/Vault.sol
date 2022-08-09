@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 //pragma solidity ^0.8.13;
 
 import { Staking } from "./Staking.sol";
+import { ERC4907BasedNFT } from "./ERC4907BasedNFT.sol";
 
 
 /**
@@ -12,13 +13,15 @@ contract Vault {
 
     IERC20 public immutable token;
     Staking public immutable staking;
+    ERC4907BasedNFT public immutable erc4907BasedNFT;
 
     uint public totalSupply;
     mapping(address => uint) public balanceOf;
 
-    constructor(address _token, Staking _staking) {
+    constructor(address _token, Staking _staking, ERC4907BasedNFT _erc4907BasedNFT) {
         token = IERC20(_token);
         staking = _staking;
+        erc4907BasedNFT = _erc4907BasedNFT;
     }
 
     function _mint(address _to, uint _shares) private {
