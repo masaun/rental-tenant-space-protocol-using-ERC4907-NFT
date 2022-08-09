@@ -2,15 +2,23 @@
 pragma solidity ^0.8.0;
 //pragma solidity ^0.8.13;
 
+import { Staking } from "./Staking.sol";
 
+
+/**
+ * @title - The vault contract
+ */ 
 contract Vault {
+
     IERC20 public immutable token;
+    Staking public immutable staking;
 
     uint public totalSupply;
     mapping(address => uint) public balanceOf;
 
-    constructor(address _token) {
+    constructor(address _token, Staking _staking) {
         token = IERC20(_token);
+        staking = _staking;
     }
 
     function _mint(address _to, uint _shares) private {

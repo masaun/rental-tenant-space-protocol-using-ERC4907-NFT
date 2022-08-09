@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0; 
 
-contract StakingRewards {
+contract Staking {
     IERC20 public immutable stakingToken;
     IERC20 public immutable rewardsToken;
 
@@ -9,21 +9,28 @@ contract StakingRewards {
 
     // Duration of rewards to be paid out (in seconds)
     uint public duration;
+
     // Timestamp of when the rewards finish
     uint public finishAt;
+    
     // Minimum of last updated time and reward finish time
     uint public updatedAt;
+    
     // Reward to be paid out per second
     uint public rewardRate;
+    
     // Sum of (reward rate * dt * 1e18 / total supply)
     uint public rewardPerTokenStored;
+    
     // User address => rewardPerTokenStored
     mapping(address => uint) public userRewardPerTokenPaid;
+    
     // User address => rewards to be claimed
     mapping(address => uint) public rewards;
 
     // Total staked
     uint public totalSupply;
+
     // User address => staked amount
     mapping(address => uint) public balanceOf;
 
