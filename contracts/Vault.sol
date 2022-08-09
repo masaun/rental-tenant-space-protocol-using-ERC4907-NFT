@@ -35,6 +35,9 @@ contract Vault {
     }
 
     function deposit(uint _amount) external {
+        //@dev - Stake underlying tokens into the Staking contract
+        staking.stake(_amount);
+
         /*
         a = amount
         B = balance of underlyingToken before deposit
