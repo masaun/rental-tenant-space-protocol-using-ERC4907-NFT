@@ -18,8 +18,8 @@ contract Vault {
     uint public totalSupply;
     mapping(address => uint) public balanceOf;
 
-    constructor(address _underlyingToken, Staking _staking, ERC4907BasedNFT _erc4907BasedNFT) {
-        underlyingToken = IERC20(_underlyingToken);
+    constructor(IERC20 _underlyingToken, Staking _staking, ERC4907BasedNFT _erc4907BasedNFT) {
+        underlyingToken = _underlyingToken;
         staking = _staking;
         erc4907BasedNFT = _erc4907BasedNFT;
     }
@@ -35,6 +35,9 @@ contract Vault {
     }
 
     function deposit(uint _amount) external {
+        //@dev - Stake underlying tokens into the Staking contract
+        staking.stake(_amount);
+
         /*
         a = amount
         B = balance of underlyingToken before deposit
