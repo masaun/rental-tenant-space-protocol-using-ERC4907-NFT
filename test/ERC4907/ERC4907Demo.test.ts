@@ -44,14 +44,14 @@ describe("test of ERC4907 Demo", async function () {
         const demo: ERC4907Demo = instance
 
         //@dev - Mint a ERC4907-based NFT
-        await demo.connect(owner).mint(1, Alice)
+        let tx1: ContractTransaction = await demo.connect(owner).mint(1, Alice)
         
         //@dev - Calculate expiration period
         let expires = Math.floor(new Date().getTime()/1000) + 1000
 
         //@dev - Set user in the ERC4907-based NFT
-        await demo.connect(alice).setApprovalForAll(Bob, true)
-        await demo.connect(alice).setUser(1, Bob, BigInt(expires))
+        let tx2: ContractTransaction = await demo.connect(alice).setApprovalForAll(Bob, true)
+        let tx3: ContractTransaction = await demo.connect(alice).setUser(1, Bob, BigInt(expires))
 
         //@dev - Get a user who is set in the ERC4907-based NFT
         let user_1 = await demo.userOf(1)
