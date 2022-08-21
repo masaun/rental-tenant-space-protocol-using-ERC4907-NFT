@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-//pragma solidity ^0.8.13;
 
 import { Staking } from "./Staking.sol";
 import { ERC4907BasedNFT } from "./ERC4907BasedNFT.sol";
@@ -28,10 +27,10 @@ contract Vault {
      * @notice - Deposit underlyingToken and a ERC4907-based NFT
      * @param _amount - underlyingToken amount to be deposited
      */ 
-    function deposit(uint _amount) external {
+    function deposit(uint _amount, uint _tokenId) external {
         //@dev - Deposit a ERC4907-based NFT
-        uint256 tokenId = 0;
-        erc4907BasedNFT.transferFrom(msg.sender, address(this), tokenId);
+        //uint256 _tokenId = 0;
+        erc4907BasedNFT.transferFrom(msg.sender, address(this), _tokenId);
 
         //@dev - Stake underlying tokens into the Staking contract
         staking.stake(_amount);
