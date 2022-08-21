@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import { Staking } from "./Staking.sol";
-import { ERC4907BasedNFT } from "./ERC4907BasedNFT.sol";
+import { TenantNFT } from "./TenantNFT.sol";
 
 
 /**
@@ -12,15 +12,15 @@ contract Vault {
 
     IERC20 public immutable underlyingToken;
     Staking public immutable staking;
-    ERC4907BasedNFT public immutable erc4907BasedNFT;
+    TenantNFT public immutable tenantNFT;
 
     uint public totalSupply;
     mapping(address => uint) public balanceOf;
 
-    constructor(IERC20 _underlyingToken, Staking _staking, ERC4907BasedNFT _erc4907BasedNFT) {
+    constructor(IERC20 _underlyingToken, Staking _staking, TenantNFT _tenantNFT) {
         underlyingToken = _underlyingToken;
         staking = _staking;
-        erc4907BasedNFT = _erc4907BasedNFT;
+        tenantNFT = _tenantNFT;
     }
 
     /**
@@ -30,7 +30,7 @@ contract Vault {
     function deposit(uint _amount, uint _tokenId) external {
         //@dev - Deposit a ERC4907-based NFT
         //uint256 _tokenId = 0;
-        erc4907BasedNFT.transferFrom(msg.sender, address(this), _tokenId);
+        tenantNFT.transferFrom(msg.sender, address(this), _tokenId);
 
         //@dev - Stake underlying tokens into the Staking contract
         staking.stake(_amount);

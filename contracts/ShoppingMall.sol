@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { ERC4907BasedNFT } from "./ERC4907BasedNFT.sol";
+import { TenantNFT } from "./TenantNFT.sol";
 import { RentingMarketplace } from "./RentingMarketplace.sol";
 
 
@@ -14,12 +14,12 @@ import { RentingMarketplace } from "./RentingMarketplace.sol";
 contract ShoppingMall {
 
     IERC20 public immutable underlyingToken;
-    ERC4907BasedNFT public immutable erc4907BasedNFT;
+    TenantNFT public immutable tenantNFT;
     RentingMarketplace public immutable rentingMarketplace;
 
-    constructor(IERC20 _underlyingToken, ERC4907BasedNFT _erc4907BasedNFT, RentingMarketplace _rentingMarketplace) {
+    constructor(IERC20 _underlyingToken, TenantNFT _tenantNFT, RentingMarketplace _rentingMarketplace) {
         underlyingToken = _underlyingToken;
-        erc4907BasedNFT = _erc4907BasedNFT;
+        tenantNFT = _tenantNFT;
         rentingMarketplace = _rentingMarketplace;
     }
 
