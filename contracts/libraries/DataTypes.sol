@@ -7,11 +7,11 @@ pragma solidity ^0.8.0;
 library DataTypes {
 
     /**
-     * @notice - Data of Somothing Metadata
+     * @notice - Tenant data
      */ 
-    struct SomothingMetadata {
-        address creator;
-        uint256 number;
+    struct TenantData {
+        address tenant;
+        uint256 price;   // price for tenant
     }
 
     /**
