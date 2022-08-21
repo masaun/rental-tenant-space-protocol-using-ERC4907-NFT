@@ -17,5 +17,24 @@ contract ERC4907BasedNFT is ERC4907 {
         _mint(to, tokenId);
     }
 
+
+    /**
+     * @notice - Set a price of a tenant NFT
+     */
+    function setPrice(uint256 price) public {
+        //[TODO]: Set a price of NFT and save it into the struct
+    }
+
+
+    ///-----------------------------
+    /// Getter methods
+    ///-----------------------------
+    /**
+     * @notice - Get a price of a tenant NFT
+     */
+    function getPrice(uint256 tokenId) public view returns (uint256 _price) {
+        //[TODO]: Get a price of NFT from the struct
+    }
+
 } 
 
