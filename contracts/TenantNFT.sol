@@ -11,10 +11,10 @@ import { DataTypes } from "./libraries/DataTypes.sol";
 import "hardhat/console.sol";
 
 /**
- * @title - ERC4907-based NFT contract
- * @notice - This is same with ERC4907Demo.sol
- */ 
-contract ERC4907BasedNFT is ERC4907 {
+ * @title - The Tenant NFT contract
+ * @notice - This contract is a ERC4907-based NFT contract
+ */
+contract TenantNFT is ERC4907 {
 
     mapping (address => mapping (uint256 => DataTypes.TenantData)) public tenantDatas;  // [Key]: TokenID -> the TenantData struct
 
