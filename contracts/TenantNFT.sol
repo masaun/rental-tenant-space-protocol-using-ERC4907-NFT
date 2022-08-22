@@ -31,7 +31,6 @@ contract TenantNFT is ERC4907 {
      * @notice - Set a price of a tenant NFT
      */
     function setPrice(address _tenant, uint256 _tokenId, uint256 _price) public {
-        //[TODO]: Set a price of NFT and save it into the struct
         DataTypes.TenantData storage tenantData = tenantDatas[_tenant][_tokenId];
         tenantData.price = _price;
     }
@@ -40,11 +39,13 @@ contract TenantNFT is ERC4907 {
     ///-----------------------------
     /// Getter methods
     ///-----------------------------
+    
     /**
      * @notice - Get a price of a tenant NFT
      */
-    function getPrice(uint256 tokenId) public view returns (uint256 _price) {
-        //[TODO]: Get a price of NFT from the struct
+    function getPrice(address _tenant, uint256 _tokenId) public view returns (uint256 _price) {
+        DataTypes.TenantData memory tenantData = tenantDatas[_tenant][_tokenId];
+        return tenantData.price;
     }
 
 } 
