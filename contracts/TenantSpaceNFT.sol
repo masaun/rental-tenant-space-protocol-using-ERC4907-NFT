@@ -11,12 +11,12 @@ import { DataTypes } from "./libraries/DataTypes.sol";
 import "hardhat/console.sol";
 
 /**
- * @title - The Tenant NFT contract
+ * @title - The tenant space NFT contract
  * @notice - This contract is a ERC4907-based NFT contract
  */
-contract TenantNFT is ERC4907 {
+contract TenantSpaceNFT is ERC4907 {
 
-    mapping (address => mapping (uint256 => DataTypes.TenantData)) public tenantDatas;  // [Key]: TokenID -> the TenantData struct
+    mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: Tenant address -> TokenID -> the TenantData struct
 
     constructor(string memory name_, string memory symbol_) ERC4907(name_,symbol_) {
         //[TODO]: 
@@ -31,8 +31,8 @@ contract TenantNFT is ERC4907 {
      * @notice - Set a price of a tenant NFT
      */
     function setPrice(address _tenant, uint256 _tokenId, uint256 _price) public {
-        DataTypes.TenantData storage tenantData = tenantDatas[_tenant][_tokenId];
-        tenantData.price = _price;
+        DataTypes.TenantSpaceData storage tenantSpaceData = tenantSpaceDatas[_tenant][_tokenId];
+        tenantSpaceData.price = _price;
     }
 
 
@@ -44,8 +44,8 @@ contract TenantNFT is ERC4907 {
      * @notice - Get a price of a tenant NFT
      */
     function getPrice(address _tenant, uint256 _tokenId) public view returns (uint256 _price) {
-        DataTypes.TenantData memory tenantData = tenantDatas[_tenant][_tokenId];
-        return tenantData.price;
+        DataTypes.TenantSpaceData memory tenantSpaceData = tenantSpaceDatas[_tenant][_tokenId];
+        return tenantSpaceData.price;
     }
 
 } 
