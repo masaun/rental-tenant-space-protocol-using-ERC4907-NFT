@@ -7,9 +7,9 @@ pragma solidity ^0.8.0;
 library DataTypes {
 
     /**
-     * @notice - Tenant data
+     * @notice - Tenant space data
      */ 
-    struct TenantData {
+    struct TenantSpaceData {
         address tenant;
         uint256 price;   // price for tenant
     }

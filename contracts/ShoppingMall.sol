@@ -3,8 +3,8 @@ pragma solidity ^0.8.0;
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-import { TenantNFT } from "./TenantNFT.sol";
-import { RentingMarketplace } from "./RentingMarketplace.sol";
+import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
+import { TenantSpaceNFTFactory } from "./TenantSpaceNFTFactory.sol";
 
 
 /**
@@ -14,26 +14,24 @@ import { RentingMarketplace } from "./RentingMarketplace.sol";
 contract ShoppingMall {
 
     IERC20 public immutable underlyingToken;
-    TenantNFT public immutable tenantNFT;
-    RentingMarketplace public immutable rentingMarketplace;
+    TenantSpaceNFTFactory public immutable tenantSpaceNFTFactory;
 
-    constructor(IERC20 _underlyingToken, TenantNFT _tenantNFT, RentingMarketplace _rentingMarketplace) {
+    constructor(IERC20 _underlyingToken, TenantSpaceNFTFactory _tenantSpaceNFTFactory) {
         underlyingToken = _underlyingToken;
-        tenantNFT = _tenantNFT;
-        rentingMarketplace = _rentingMarketplace;
+        tenantSpaceNFTFactory = _tenantSpaceNFTFactory;
     }
 
     /**
-     * @notice - Lend a tenant in a Shopping Mall
+     * @notice - A owner create a tenant space NFT for rent in a Shopping Mall
      */
-    function lendTenant() public returns (uint) {
+    function createTenantSpaceNFT() public returns (uint) {
         //[TODO]:
     }
 
     /*
-     * @notice - Rent a tenant in a Shopping Mall
+     * @notice - A user rent a tenant space in a Shopping Mall.
      */
-    function rentTenant() public returns (uint) {
+    function rentTenantSpace() public returns (uint) {
         //[TODO]:
     }
 
