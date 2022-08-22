@@ -24,8 +24,9 @@ contract ShoppingMall {
     /**
      * @notice - A owner create a tenant space NFT for rent in a Shopping Mall
      */
-    function createTenantSpaceNFT() public returns (uint) {
+    function createTenantSpaceNFT(string memory name_, string memory symbol_) public returns (uint) {
         //[TODO]:
+        tenantSpaceNFTFactory.createTenantSpaceNFT(name_, symbol_);
     }
 
     /*
