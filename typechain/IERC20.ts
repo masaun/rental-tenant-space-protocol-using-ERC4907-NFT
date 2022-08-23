@@ -74,14 +74,14 @@ export interface IERC20Interface extends utils.Interface {
 
 export type ApprovalEvent = TypedEvent<
   [string, string, BigNumber],
-  { owner: string; spender: string; value: BigNumber }
+  { owner: string; spender: string; amount: BigNumber }
 >;
 
 export type ApprovalEventFilter = TypedEventFilter<ApprovalEvent>;
 
 export type TransferEvent = TypedEvent<
   [string, string, BigNumber],
-  { from: string; to: string; value: BigNumber }
+  { from: string; to: string; amount: BigNumber }
 >;
 
 export type TransferEventFilter = TypedEventFilter<TransferEvent>;
@@ -131,14 +131,14 @@ export interface IERC20 extends BaseContract {
     totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     transfer(
-      to: string,
+      recipient: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     transferFrom(
-      from: string,
-      to: string,
+      sender: string,
+      recipient: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
@@ -161,14 +161,14 @@ export interface IERC20 extends BaseContract {
   totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
   transfer(
-    to: string,
+    recipient: string,
     amount: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   transferFrom(
-    from: string,
-    to: string,
+    sender: string,
+    recipient: string,
     amount: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
@@ -191,14 +191,14 @@ export interface IERC20 extends BaseContract {
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
     transfer(
-      to: string,
+      recipient: string,
       amount: BigNumberish,
       overrides?: CallOverrides
     ): Promise<boolean>;
 
     transferFrom(
-      from: string,
-      to: string,
+      sender: string,
+      recipient: string,
       amount: BigNumberish,
       overrides?: CallOverrides
     ): Promise<boolean>;
@@ -208,23 +208,23 @@ export interface IERC20 extends BaseContract {
     "Approval(address,address,uint256)"(
       owner?: string | null,
       spender?: string | null,
-      value?: null
+      amount?: null
     ): ApprovalEventFilter;
     Approval(
       owner?: string | null,
       spender?: string | null,
-      value?: null
+      amount?: null
     ): ApprovalEventFilter;
 
     "Transfer(address,address,uint256)"(
       from?: string | null,
       to?: string | null,
-      value?: null
+      amount?: null
     ): TransferEventFilter;
     Transfer(
       from?: string | null,
       to?: string | null,
-      value?: null
+      amount?: null
     ): TransferEventFilter;
   };
 
@@ -246,14 +246,14 @@ export interface IERC20 extends BaseContract {
     totalSupply(overrides?: CallOverrides): Promise<BigNumber>;
 
     transfer(
-      to: string,
+      recipient: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     transferFrom(
-      from: string,
-      to: string,
+      sender: string,
+      recipient: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
@@ -280,14 +280,14 @@ export interface IERC20 extends BaseContract {
     totalSupply(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     transfer(
-      to: string,
+      recipient: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     transferFrom(
-      from: string,
-      to: string,
+      sender: string,
+      recipient: string,
       amount: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;

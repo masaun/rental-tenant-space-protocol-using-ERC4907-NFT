@@ -17,7 +17,7 @@ function toWei(amount: number) {
     return ethers.utils.parseEther(`${ amount }`)
 }
 
-function fromWei(amount: number) {
+function fromWei(amount: BigNumber) {
     return ethers.utils.formatEther(`${ amount }`)
 }
 

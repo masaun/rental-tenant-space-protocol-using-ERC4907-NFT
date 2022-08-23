@@ -21,12 +21,18 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
     : describe("Unit Test - TenantSpaceNFTFactory.sol", async function () {
           //@dev - Signer of wallet addresses
           let deployer: SignerWithAddress
-          let user1: SignerWithAddress
-          let user2: SignerWithAddress
+          let owner1: SignerWithAddress
+          let owner2: SignerWithAddress
+          let tenant1: SignerWithAddress
+          let tenant2: SignerWithAddress
           let addrs: SignerWithAddress[]
 
           //@dev - wallet addresses
           let DEPLOYER: string
+          let OWNER_1: string
+          let OWNER_2: string
+          let TENANT_1: string
+          let TENANT_2: string
 
           //@dev - Variables for assigning contract instances          
           let tenantSpaceNFTFactory: TenantSpaceNFTFactory
@@ -37,8 +43,12 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
 
           before(async () => {
               //@dev - Get signers and wallet addresses for this tests 
-              [deployer, user1, user2, ...addrs] = await ethers.getSigners()
+              [deployer, owner1, owner2, tenant1, tenant2, ...addrs] = await ethers.getSigners()
               DEPLOYER = deployer.address
+              OWNER_1 = owner1.address
+              OWNER_2 = owner2.address
+              TENANT_1 = tenant1.address
+              TENANT_2 = tenant2.address
               console.log(`\n deployer: ${ DEPLOYER }`)
 
               //@dev - Using "hardhat-deploy" module
@@ -52,8 +62,12 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           it(`createTenantSpaceNFT() - Should be successful to create a new TenantSpaceNFT`, async () => {
               const name = "Test Tenant Space NFT"
               const symbol = "TTS_NFT"
-              let tx: ContractTransaction = await tenantSpaceNFTFactory.connect(deployer).createTenantSpaceNFT(name, symbol)
+              let tx: ContractTransaction = await tenantSpaceNFTFactory.connect(owner1).createTenantSpaceNFT(name, symbol)
               let txReceipt: ContractReceipt = await tx.wait()
+              //console.log(`txReceipt of tenantSpaceNFTFactory.createTenantSpaceNFT(): ${ JSON.stringify(txReceipt, null, 2) }`)
+
+              let eventLog: any = await getEventLog(txReceipt, "TenantSpaceNFTCreated")
+              console.log(`eventLog of "TenantSpaceNFTCreated": ${ JSON.stringify(eventLog, null, 2) }`)
           })
 
       })
