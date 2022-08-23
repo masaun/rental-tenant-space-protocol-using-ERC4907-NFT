@@ -25,7 +25,7 @@ export interface TenantSpaceNFTInterface extends utils.Interface {
     "getApproved(uint256)": FunctionFragment;
     "getPrice(address,uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
-    "mint(uint256,address)": FunctionFragment;
+    "mint(address)": FunctionFragment;
     "name()": FunctionFragment;
     "ownerOf(uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
@@ -58,10 +58,7 @@ export interface TenantSpaceNFTInterface extends utils.Interface {
     functionFragment: "isApprovedForAll",
     values: [string, string]
   ): string;
-  encodeFunctionData(
-    functionFragment: "mint",
-    values: [BigNumberish, string]
-  ): string;
+  encodeFunctionData(functionFragment: "mint", values: [string]): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "ownerOf",
@@ -248,7 +245,6 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<[boolean]>;
 
     mint(
-      tokenId: BigNumberish,
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
@@ -354,7 +350,6 @@ export interface TenantSpaceNFT extends BaseContract {
   ): Promise<boolean>;
 
   mint(
-    tokenId: BigNumberish,
     to: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
@@ -453,11 +448,7 @@ export interface TenantSpaceNFT extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    mint(
-      tokenId: BigNumberish,
-      to: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    mint(to: string, overrides?: CallOverrides): Promise<void>;
 
     name(overrides?: CallOverrides): Promise<string>;
 
@@ -601,7 +592,6 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     mint(
-      tokenId: BigNumberish,
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
@@ -714,7 +704,6 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     mint(
-      tokenId: BigNumberish,
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;

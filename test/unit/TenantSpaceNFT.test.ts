@@ -4,7 +4,7 @@ import { network, deployments, ethers, run } from "hardhat"
 import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address"
 import { developmentChains } from "../../helper-hardhat-config"
-import { TenantSpaceNFTFactory, LinkToken, MockOracle, VRFCoordinatorV2Mock } from "../../typechain"
+import { TenantSpaceNFT, TenantSpaceNFTFactory, LinkToken, MockOracle, VRFCoordinatorV2Mock } from "../../typechain"
 
 //@dev - Helper of ethers.js for retrieving eventLogs emitted, etc.
 import { getEventLog } from "../ethersjs-helper/ethersjsHelper"
@@ -34,7 +34,8 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           let TENANT_1: string
           let TENANT_2: string
 
-          //@dev - Variables for assigning contract instances          
+          //@dev - Variables for assigning contract instances
+          let tenantSpaceNFT: TenantSpaceNFT
           let tenantSpaceNFTFactory: TenantSpaceNFTFactory
           let linkToken: LinkToken
           let mockOracle: MockOracle
@@ -82,13 +83,27 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               console.log(`eventLog of "TenantSpaceNFTCreated": ${ JSON.stringify(eventLog, null, 2) }`)
 
               let ownerOfTenantSpaceNFT: string = eventLog[0]
-              let TENANT_SPACE_NFT: string = eventLog[1]
+              TENANT_SPACE_NFT = eventLog[1]
               console.log(`Owner of TenantSpaceNFT: ${ ownerOfTenantSpaceNFT }`)
               console.log(`TenantSpaceNFT: ${ TENANT_SPACE_NFT }`)
           })
 
-          it(`Should be successful to ~~`, async () => {
-              //[TODO]: 
+          it(`Should create a TenantSpaceNFT contract instance`, async () => {
+              tenantSpaceNFT = await ethers.getContractAt("TenantSpaceNFT", TENANT_SPACE_NFT)
+          })
+
+          it(`mint() - Should be successful to mint a TenantSpaceNFT (that is based on ERC4907) to owner1's wallet address`, async () => {
+              let tx: ContractTransaction = await tenantSpaceNFT.connect(owner1).mint(OWNER_1)
+              let txReceipt: ContractReceipt = await tx.wait()
+          })
+
+          it(`balanceOf() and ownerOf() - A owner1's wallet should has a TenantSpaceNFT of tokenID=0`, async () => {
+              let TenantSpaceNFTBalanceOfOwner1  = await tenantSpaceNFT.balanceOf(OWNER_1)
+              console.log(`TenantSpaceNFT balance of owner1: ${ TenantSpaceNFTBalanceOfOwner1 }`)
+
+              const tokenId = 0
+              let ownerOfTenantSpaceNFT = await tenantSpaceNFT.ownerOf(tokenId)
+              console.log(`Owner of TenantSpaceNFT of tokenID=0: ${ ownerOfTenantSpaceNFT }`)
           })
 
       })
