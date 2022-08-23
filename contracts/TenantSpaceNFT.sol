@@ -4,6 +4,9 @@ pragma solidity ^0.8.0;
 //@dev - ERC4907 related modules
 import "./ERC4907/ERC4907.sol";
 
+//@dev - OpenZeppelin
+import "@openzeppelin/contracts/utils/Counters.sol";
+
 //@dev - Interfaces
 import { ITenantSpaceNFT } from "./interfaces/ITenantSpaceNFT.sol";
 
@@ -19,14 +22,20 @@ import "hardhat/console.sol";
  */
 contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
 
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIds;
+
     mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: Tenant address -> TokenID -> the TenantData struct
 
     constructor(string memory name_, string memory symbol_) ERC4907(name_,symbol_) {
         //[TODO]: 
     }
 
-    function mint(uint256 tokenId, address to) public override {
-        _mint(to, tokenId);
+    function mint(address to) public override {
+        uint newTokenId = _tokenIds.current();  // TokenID is counted from 0 
+        _mint(to, newTokenId);
+
+        _tokenIds.increment();
     }
 
 

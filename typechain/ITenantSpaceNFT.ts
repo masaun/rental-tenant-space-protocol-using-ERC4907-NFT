@@ -21,7 +21,7 @@ export interface ITenantSpaceNFTInterface extends utils.Interface {
   contractName: "ITenantSpaceNFT";
   functions: {
     "getPrice(address,uint256)": FunctionFragment;
-    "mint(uint256,address)": FunctionFragment;
+    "mint(address)": FunctionFragment;
     "setPrice(address,uint256,uint256)": FunctionFragment;
   };
 
@@ -29,10 +29,7 @@ export interface ITenantSpaceNFTInterface extends utils.Interface {
     functionFragment: "getPrice",
     values: [string, BigNumberish]
   ): string;
-  encodeFunctionData(
-    functionFragment: "mint",
-    values: [BigNumberish, string]
-  ): string;
+  encodeFunctionData(functionFragment: "mint", values: [string]): string;
   encodeFunctionData(
     functionFragment: "setPrice",
     values: [string, BigNumberish, BigNumberish]
@@ -80,7 +77,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<[BigNumber] & { _price: BigNumber }>;
 
     mint(
-      tokenId: BigNumberish,
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
@@ -100,7 +96,6 @@ export interface ITenantSpaceNFT extends BaseContract {
   ): Promise<BigNumber>;
 
   mint(
-    tokenId: BigNumberish,
     to: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
@@ -119,11 +114,7 @@ export interface ITenantSpaceNFT extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    mint(
-      tokenId: BigNumberish,
-      to: string,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    mint(to: string, overrides?: CallOverrides): Promise<void>;
 
     setPrice(
       _tenant: string,
@@ -143,7 +134,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     mint(
-      tokenId: BigNumberish,
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
@@ -164,7 +154,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     mint(
-      tokenId: BigNumberish,
       to: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;

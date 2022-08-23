@@ -37,11 +37,6 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-      {
         internalType: "address",
         name: "to",
         type: "address",

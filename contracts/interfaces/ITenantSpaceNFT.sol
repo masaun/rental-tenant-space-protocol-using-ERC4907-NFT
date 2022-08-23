@@ -6,7 +6,7 @@ import { DataTypes } from '../libraries/DataTypes.sol';
 
 interface ITenantSpaceNFT {
 
-    function mint(uint256 tokenId, address to) external;
+    function mint(address to) external;
 
     function setPrice(address _tenant, uint256 _tokenId, uint256 _price) external;
 
