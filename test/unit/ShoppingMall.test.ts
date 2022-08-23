@@ -18,7 +18,7 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
  */ 
 !developmentChains.includes(network.name)
     ? describe.skip
-    : describe("Scenario Tests", async function () {
+    : describe("Unit Test - ShoppingMall.sol", async function () {
           //@dev - Signer of wallet addresses
           let deployer: SignerWithAddress
           let user1: SignerWithAddress
