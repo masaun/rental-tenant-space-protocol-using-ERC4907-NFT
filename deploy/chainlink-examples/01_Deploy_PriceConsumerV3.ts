@@ -4,8 +4,8 @@ import {
   networkConfig,
   developmentChains,
   VERIFICATION_BLOCK_CONFIRMATIONS,
-} from "../helper-hardhat-config"
-import { verify } from "../helper-functions"
+} from "../../helper-hardhat-config"
+import { verify } from "../../helper-functions"
 
 const deployFunction: DeployFunction = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments

@@ -4,7 +4,7 @@ import { network, deployments, ethers, run } from "hardhat"
 import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address"
 import { developmentChains } from "../../helper-hardhat-config"
-import { LinkToken, MockOracle, VRFCoordinatorV2Mock } from "../../typechain"
+import { TenantSpaceNFTFactory } from "../../typechain"
 
 //@dev - Helper of ethers.js for retrieving eventLogs emitted, etc.
 import { getEventLog } from "../ethersjs-helper/ethersjsHelper"
@@ -29,12 +29,10 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           let DEPLOYER: string
 
           //@dev - Variables for assigning contract instances          
-          let linkToken: LinkToken
-          let mockOracle: MockOracle
-          let vrfCoordinatorV2Mock: VRFCoordinatorV2Mock
+          let tenantSpaceNFTFactory: TenantSpaceNFTFactory
 
           //@dev - Variables for assigning deployed-addresses
-          let VRF_COORDINATOR_V2_MOCK: string
+          let TENANT_SPACE_NFT_FACTORY: string
 
 
           before(async () => {
@@ -46,12 +44,9 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               //@dev - Using "hardhat-deploy" module
               await deployments.fixture(["mocks", "api"])
 
-              linkToken = await ethers.getContract("LinkToken")
-              const linkTokenAddress: string = linkToken.address
-
-              vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
-              VRF_COORDINATOR_V2_MOCK = vrfCoordinatorV2Mock.address
-              console.log(`\n##### Deployed-contract address of the VRFCoordinatorV2Mock.sol: ${ VRF_COORDINATOR_V2_MOCK } ######`)
+              tenantSpaceNFTFactory = await ethers.getContract("TenantSpaceNFTFactory")
+              TENANT_SPACE_NFT_FACTORY = tenantSpaceNFTFactory.address
+              console.log(`\n##### Deployed-contract address of the TenantSpaceNFTFactory.sol: ${ TENANT_SPACE_NFT_FACTORY } ######`)
           })
 
           it(`Should be successful to ~~`, async () => {
