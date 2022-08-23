@@ -1,9 +1,31 @@
 # Chainlink Encode Hack (NOTE: Temporary Project Name)
 
 ## Test (Mainnet-forking test)
-- Scenario test (chainlink-examples)
+- Unit test of the ShoppingMall.sol
 ```
-yarn test-scenario:chainlink-examples
+yarn test-unit:ShoppingMall
+```
+
+<br>
+
+- Unit test of the TenantSpaceNFT.sol
+```
+yarn test-unit:TenantSpaceNFT
+```
+
+<br>
+
+- Unit test of the TenantSpaceNFTFactory.sol
+```
+yarn test-unit:TenantSpaceNFTFactory
+```
+
+<br>
+
+
+- Scenario test
+```
+yarn test-scenario
 ```
 
 <br>
