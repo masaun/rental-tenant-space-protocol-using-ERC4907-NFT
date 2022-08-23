@@ -4,10 +4,10 @@ import {
   networkConfig,
   developmentChains,
   VERIFICATION_BLOCK_CONFIRMATIONS,
-} from "../helper-hardhat-config"
-import { verify } from "../helper-functions"
+} from "../../helper-hardhat-config"
+import { verify } from "../../helper-functions"
 import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
-import { VRFCoordinatorV2Mock } from "../typechain"
+import { VRFCoordinatorV2Mock } from "../../typechain"
 
 const deployFunction: DeployFunction = async ({ getNamedAccounts, deployments }) => {
   const { deploy, get, log } = deployments
