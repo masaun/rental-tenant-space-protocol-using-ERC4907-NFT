@@ -68,6 +68,11 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
 
               let eventLog: any = await getEventLog(txReceipt, "TenantSpaceNFTCreated")
               console.log(`eventLog of "TenantSpaceNFTCreated": ${ JSON.stringify(eventLog, null, 2) }`)
+
+              let ownerOfTenantSpaceNFT: string = eventLog[0]
+              let TENANT_SPACE_NFT: string = eventLog[1]
+              console.log(`Owner of TenantSpaceNFT: ${ ownerOfTenantSpaceNFT }`)
+              console.log(`TenantSpaceNFT: ${ TENANT_SPACE_NFT }`)
           })
 
       })
