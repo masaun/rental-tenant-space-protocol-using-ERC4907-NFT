@@ -22,7 +22,6 @@ export interface ShoppingMallInterface extends utils.Interface {
     "createTenantSpaceNFT(string,string)": FunctionFragment;
     "rentTenantSpace()": FunctionFragment;
     "tenantSpaceNFTFactory()": FunctionFragment;
-    "underlyingToken()": FunctionFragment;
   };
 
   encodeFunctionData(
@@ -37,10 +36,6 @@ export interface ShoppingMallInterface extends utils.Interface {
     functionFragment: "tenantSpaceNFTFactory",
     values?: undefined
   ): string;
-  encodeFunctionData(
-    functionFragment: "underlyingToken",
-    values?: undefined
-  ): string;
 
   decodeFunctionResult(
     functionFragment: "createTenantSpaceNFT",
@@ -52,10 +47,6 @@ export interface ShoppingMallInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "tenantSpaceNFTFactory",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "underlyingToken",
     data: BytesLike
   ): Result;
 
@@ -101,8 +92,6 @@ export interface ShoppingMall extends BaseContract {
     ): Promise<ContractTransaction>;
 
     tenantSpaceNFTFactory(overrides?: CallOverrides): Promise<[string]>;
-
-    underlyingToken(overrides?: CallOverrides): Promise<[string]>;
   };
 
   createTenantSpaceNFT(
@@ -117,8 +106,6 @@ export interface ShoppingMall extends BaseContract {
 
   tenantSpaceNFTFactory(overrides?: CallOverrides): Promise<string>;
 
-  underlyingToken(overrides?: CallOverrides): Promise<string>;
-
   callStatic: {
     createTenantSpaceNFT(
       name_: string,
@@ -129,8 +116,6 @@ export interface ShoppingMall extends BaseContract {
     rentTenantSpace(overrides?: CallOverrides): Promise<BigNumber>;
 
     tenantSpaceNFTFactory(overrides?: CallOverrides): Promise<string>;
-
-    underlyingToken(overrides?: CallOverrides): Promise<string>;
   };
 
   filters: {};
@@ -147,8 +132,6 @@ export interface ShoppingMall extends BaseContract {
     ): Promise<BigNumber>;
 
     tenantSpaceNFTFactory(overrides?: CallOverrides): Promise<BigNumber>;
-
-    underlyingToken(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -165,7 +148,5 @@ export interface ShoppingMall extends BaseContract {
     tenantSpaceNFTFactory(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
-
-    underlyingToken(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

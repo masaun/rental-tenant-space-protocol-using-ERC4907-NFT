@@ -13,11 +13,9 @@ import { TenantSpaceNFTFactory } from "./TenantSpaceNFTFactory.sol";
  */ 
 contract ShoppingMall {
 
-    IERC20 public immutable underlyingToken;
     TenantSpaceNFTFactory public immutable tenantSpaceNFTFactory;
 
-    constructor(IERC20 _underlyingToken, TenantSpaceNFTFactory _tenantSpaceNFTFactory) {
-        underlyingToken = _underlyingToken;
+    constructor(TenantSpaceNFTFactory _tenantSpaceNFTFactory) {
         tenantSpaceNFTFactory = _tenantSpaceNFTFactory;
     }
 
