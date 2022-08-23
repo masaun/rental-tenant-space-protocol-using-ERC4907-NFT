@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "compile": "hardhat compile",
+    "test-scenario": "hardhat test ./test/scenario/Scenario.test.ts --network hardhat",
     "test-unit:ERC4907Demo": "hardhat test ./test/ERC4907/ERC4907Demo.test.ts",
     "test-unit:chainlink-examples": "hardhat test ./test/chainlink-examples/unit/*.spec.ts --network hardhat",
     "test-staging:chainlink-examples": "hardhat test ./test/chainlink-examples/staging/*.spec.ts --network rinkeby",
