@@ -1,7 +1,7 @@
 import { numToBytes32 } from "@chainlink/test-helpers/dist/src/helpers"
 import { assert, expect } from "chai"
 import { network, deployments, ethers, run } from "hardhat"
-import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
+import { BigNumber, ContractTransaction, ContractReceipt } from "ethers"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address"
 import { developmentChains } from "../../helper-hardhat-config"
 import { TenantSpaceNFTFactory } from "../../typechain"
@@ -49,8 +49,11 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               console.log(`\n##### Deployed-contract address of the TenantSpaceNFTFactory.sol: ${ TENANT_SPACE_NFT_FACTORY } ######`)
           })
 
-          it(`Should be successful to ~~`, async () => {
-              //[TODO]: 
+          it(`createTenantSpaceNFT() - Should be successful to create a new TenantSpaceNFT`, async () => {
+              const name = "Test Tenant Space NFT"
+              const symbol = "TTS_NFT"
+              let tx: ContractTransaction = await tenantSpaceNFTFactory.connect(deployer).createTenantSpaceNFT(name, symbol)
+              let txReceipt: ContractReceipt = await tx.wait()
           })
 
       })
