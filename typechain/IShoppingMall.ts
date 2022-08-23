@@ -12,48 +12,45 @@ import {
   Signer,
   utils,
 } from "ethers";
-import { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
+import { FunctionFragment, Result } from "@ethersproject/abi";
 import { Listener, Provider } from "@ethersproject/providers";
 import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 
-export interface TenantSpaceNFTFactoryInterface extends utils.Interface {
-  contractName: "TenantSpaceNFTFactory";
+export interface IShoppingMallInterface extends utils.Interface {
+  contractName: "IShoppingMall";
   functions: {
     "createTenantSpaceNFT(string,string)": FunctionFragment;
+    "rentTenantSpace()": FunctionFragment;
   };
 
   encodeFunctionData(
     functionFragment: "createTenantSpaceNFT",
     values: [string, string]
   ): string;
+  encodeFunctionData(
+    functionFragment: "rentTenantSpace",
+    values?: undefined
+  ): string;
 
   decodeFunctionResult(
     functionFragment: "createTenantSpaceNFT",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "rentTenantSpace",
+    data: BytesLike
+  ): Result;
 
-  events: {
-    "TenantSpaceNFTCreated(address,address)": EventFragment;
-  };
-
-  getEvent(nameOrSignatureOrTopic: "TenantSpaceNFTCreated"): EventFragment;
+  events: {};
 }
 
-export type TenantSpaceNFTCreatedEvent = TypedEvent<
-  [string, string],
-  { owner: string; tenantSpaceNFT: string }
->;
-
-export type TenantSpaceNFTCreatedEventFilter =
-  TypedEventFilter<TenantSpaceNFTCreatedEvent>;
-
-export interface TenantSpaceNFTFactory extends BaseContract {
-  contractName: "TenantSpaceNFTFactory";
+export interface IShoppingMall extends BaseContract {
+  contractName: "IShoppingMall";
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: TenantSpaceNFTFactoryInterface;
+  interface: IShoppingMallInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
@@ -76,49 +73,58 @@ export interface TenantSpaceNFTFactory extends BaseContract {
 
   functions: {
     createTenantSpaceNFT(
-      name: string,
-      symbol: string,
+      name_: string,
+      symbol_: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    rentTenantSpace(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
 
   createTenantSpaceNFT(
-    name: string,
-    symbol: string,
+    name_: string,
+    symbol_: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  rentTenantSpace(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   callStatic: {
     createTenantSpaceNFT(
-      name: string,
-      symbol: string,
+      name_: string,
+      symbol_: string,
       overrides?: CallOverrides
-    ): Promise<void>;
+    ): Promise<BigNumber>;
+
+    rentTenantSpace(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
-  filters: {
-    "TenantSpaceNFTCreated(address,address)"(
-      owner?: null,
-      tenantSpaceNFT?: null
-    ): TenantSpaceNFTCreatedEventFilter;
-    TenantSpaceNFTCreated(
-      owner?: null,
-      tenantSpaceNFT?: null
-    ): TenantSpaceNFTCreatedEventFilter;
-  };
+  filters: {};
 
   estimateGas: {
     createTenantSpaceNFT(
-      name: string,
-      symbol: string,
+      name_: string,
+      symbol_: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    rentTenantSpace(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
     createTenantSpaceNFT(
-      name: string,
-      symbol: string,
+      name_: string,
+      symbol_: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    rentTenantSpace(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };

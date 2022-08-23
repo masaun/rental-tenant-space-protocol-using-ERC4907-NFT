@@ -16,8 +16,8 @@ import { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
 import { Listener, Provider } from "@ethersproject/providers";
 import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 
-export interface TenantSpaceNFTFactoryInterface extends utils.Interface {
-  contractName: "TenantSpaceNFTFactory";
+export interface ITenantSpaceNFTFactoryInterface extends utils.Interface {
+  contractName: "ITenantSpaceNFTFactory";
   functions: {
     "createTenantSpaceNFT(string,string)": FunctionFragment;
   };
@@ -47,13 +47,13 @@ export type TenantSpaceNFTCreatedEvent = TypedEvent<
 export type TenantSpaceNFTCreatedEventFilter =
   TypedEventFilter<TenantSpaceNFTCreatedEvent>;
 
-export interface TenantSpaceNFTFactory extends BaseContract {
-  contractName: "TenantSpaceNFTFactory";
+export interface ITenantSpaceNFTFactory extends BaseContract {
+  contractName: "ITenantSpaceNFTFactory";
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
-  interface: TenantSpaceNFTFactoryInterface;
+  interface: ITenantSpaceNFTFactoryInterface;
 
   queryFilter<TEvent extends TypedEvent>(
     event: TypedEventFilter<TEvent>,
