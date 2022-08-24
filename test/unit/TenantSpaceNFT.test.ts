@@ -133,8 +133,16 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               )
           })
 
-          it(`ownerOf() - Owner of TenantSpaceNFT should be owner1's wallet address`, async () => {
+          it(`ownerOf() - owner1 should has a owner role of TenantSpaceNFT`, async () => {
               //[TODO]: 
+              const tokenId = 0
+              let walletAddressThatHasOwnerRole = await tenantSpaceNFT.ownerOf(tokenId)
+              console.log(`Wallet address that has a owner role of TenantSpaceNFT: ${ walletAddressThatHasOwnerRole }`)
+              assert.equal(
+                  walletAddressThatHasOwnerRole,
+                  OWNER_1,
+                  "owner1 should has a owner role of TenantSpaceNFT"
+              )
           })
 
       })
