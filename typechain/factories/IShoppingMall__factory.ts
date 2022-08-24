@@ -8,19 +8,8 @@ import type { IShoppingMall, IShoppingMallInterface } from "../IShoppingMall";
 
 const _abi = [
   {
-    inputs: [
-      {
-        internalType: "string",
-        name: "name_",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "symbol_",
-        type: "string",
-      },
-    ],
-    name: "createTenantSpaceNFT",
+    inputs: [],
+    name: "rentTenantSpaceNFT",
     outputs: [
       {
         internalType: "uint256",
@@ -32,8 +21,19 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "rentTenantSpace",
+    inputs: [
+      {
+        internalType: "contract TenantSpaceNFT",
+        name: "tenantSpaceNFT",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "storeTenantSpaceNFT",
     outputs: [
       {
         internalType: "uint256",

@@ -4,6 +4,7 @@
 import {
   BaseContract,
   BigNumber,
+  BigNumberish,
   BytesLike,
   CallOverrides,
   ContractTransaction,
@@ -19,34 +20,25 @@ import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 export interface ShoppingMallInterface extends utils.Interface {
   contractName: "ShoppingMall";
   functions: {
-    "createTenantSpaceNFT(string,string)": FunctionFragment;
-    "rentTenantSpace()": FunctionFragment;
-    "tenantSpaceNFTFactory()": FunctionFragment;
+    "rentTenantSpaceNFT()": FunctionFragment;
+    "storeTenantSpaceNFT(address,uint256)": FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "createTenantSpaceNFT",
-    values: [string, string]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "rentTenantSpace",
+    functionFragment: "rentTenantSpaceNFT",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "tenantSpaceNFTFactory",
-    values?: undefined
+    functionFragment: "storeTenantSpaceNFT",
+    values: [string, BigNumberish]
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "createTenantSpaceNFT",
+    functionFragment: "rentTenantSpaceNFT",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "rentTenantSpace",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "tenantSpaceNFTFactory",
+    functionFragment: "storeTenantSpaceNFT",
     data: BytesLike
   ): Result;
 
@@ -81,72 +73,60 @@ export interface ShoppingMall extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    createTenantSpaceNFT(
-      name_: string,
-      symbol_: string,
+    rentTenantSpaceNFT(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    rentTenantSpace(
+    storeTenantSpaceNFT(
+      tenantSpaceNFT: string,
+      tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
-
-    tenantSpaceNFTFactory(overrides?: CallOverrides): Promise<[string]>;
   };
 
-  createTenantSpaceNFT(
-    name_: string,
-    symbol_: string,
+  rentTenantSpaceNFT(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  rentTenantSpace(
+  storeTenantSpaceNFT(
+    tenantSpaceNFT: string,
+    tokenId: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
-
-  tenantSpaceNFTFactory(overrides?: CallOverrides): Promise<string>;
 
   callStatic: {
-    createTenantSpaceNFT(
-      name_: string,
-      symbol_: string,
+    rentTenantSpaceNFT(overrides?: CallOverrides): Promise<BigNumber>;
+
+    storeTenantSpaceNFT(
+      tenantSpaceNFT: string,
+      tokenId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
-
-    rentTenantSpace(overrides?: CallOverrides): Promise<BigNumber>;
-
-    tenantSpaceNFTFactory(overrides?: CallOverrides): Promise<string>;
   };
 
   filters: {};
 
   estimateGas: {
-    createTenantSpaceNFT(
-      name_: string,
-      symbol_: string,
+    rentTenantSpaceNFT(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    rentTenantSpace(
+    storeTenantSpaceNFT(
+      tenantSpaceNFT: string,
+      tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
-
-    tenantSpaceNFTFactory(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
-    createTenantSpaceNFT(
-      name_: string,
-      symbol_: string,
+    rentTenantSpaceNFT(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    rentTenantSpace(
+    storeTenantSpaceNFT(
+      tenantSpaceNFT: string,
+      tokenId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    tenantSpaceNFTFactory(
-      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };
 }

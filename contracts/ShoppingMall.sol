@@ -6,8 +6,8 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { IShoppingMall } from "./interfaces/IShoppingMall.sol";
 import { ITenantSpaceNFT } from "./interfaces/ITenantSpaceNFT.sol";
 //import { ITenantSpaceNFTFactory } from "./interfaces/ITenantSpaceNFTFactory.sol";
-//import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
-//import { TenantSpaceNFTFactory } from "./TenantSpaceNFTFactory.sol";
+
+import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
 
 
 /**
@@ -16,11 +16,8 @@ import { ITenantSpaceNFT } from "./interfaces/ITenantSpaceNFT.sol";
  */ 
 contract ShoppingMall is IShoppingMall {
 
-    //ITenantSpaceNFTFactory public immutable tenantSpaceNFTFactory;
-
     constructor() {
-    //constructor(ITenantSpaceNFTFactory _tenantSpaceNFTFactory) {
-        //tenantSpaceNFTFactory = _tenantSpaceNFTFactory;
+        //[TODO]:
     }
 
     /**
@@ -34,9 +31,12 @@ contract ShoppingMall is IShoppingMall {
     /**
      * @notice - A owner store a tenant space NFT for rent in a Shopping Mall
      * @dev - Caller is a owner who has a owner role of tenant space NFT
+     * @dev - [TODO]: Parameter of "tokenID" is better to rename as "tenantSpaceId"
      */
-    function storeTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT) public override returns (uint) {
-        //[TODO]: 
+    function storeTenantSpaceNFT(TenantSpaceNFT tenantSpaceNFT, uint tokenId) public override returns (uint) {
+        //@dev - NOTE: A owner of TenantSpaceNFT must approve this contract before transferring its TenantSpaceNFT
+        address owner = msg.sender;
+        tenantSpaceNFT.transferFrom(owner, address(this), tokenId);
     }
 
     /**
