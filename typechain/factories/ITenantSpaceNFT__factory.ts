@@ -175,7 +175,7 @@ const _abi = [
       },
       {
         internalType: "uint256",
-        name: "_tokenId",
+        name: "_tenantSpaceId",
         type: "uint256",
       },
     ],
@@ -324,7 +324,7 @@ const _abi = [
       },
       {
         internalType: "uint256",
-        name: "_tokenId",
+        name: "_tenantSpaceId",
         type: "uint256",
       },
       {

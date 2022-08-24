@@ -23,27 +23,27 @@ import "hardhat/console.sol";
 contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
 
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    Counters.Counter private _tenantSpaceIds;
 
-    mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: Tenant address -> TokenID -> the TenantData struct
+    mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: Tenant address -> tenantSpaceId -> the TenantData struct
 
     constructor(string memory name_, string memory symbol_) ERC4907(name_,symbol_) {
         //[TODO]: 
     }
 
     function mint(address to) public override {
-        uint newTokenId = _tokenIds.current();  // TokenID is counted from 0 
-        _mint(to, newTokenId);
+        uint newTenantSpaceId = _tenantSpaceIds.current();  // tenantSpaceId is counted from 0 
+        _mint(to, newTenantSpaceId);
 
-        _tokenIds.increment();
+        _tenantSpaceIds.increment();
     }
 
 
     /**
      * @notice - Set a price of a tenant NFT
      */
-    function setPrice(address _tenant, uint256 _tokenId, uint256 _price) public override {
-        DataTypes.TenantSpaceData storage tenantSpaceData = tenantSpaceDatas[_tenant][_tokenId];
+    function setPrice(address _tenant, uint256 _tenantSpaceId, uint256 _price) public override {
+        DataTypes.TenantSpaceData storage tenantSpaceData = tenantSpaceDatas[_tenant][_tenantSpaceId];
         tenantSpaceData.price = _price;
     }
 
@@ -55,8 +55,8 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     /**
      * @notice - Get a price of a tenant NFT
      */
-    function getPrice(address _tenant, uint256 _tokenId) public override view returns (uint256 _price) {
-        DataTypes.TenantSpaceData memory tenantSpaceData = tenantSpaceDatas[_tenant][_tokenId];
+    function getPrice(address _tenant, uint256 _tenantSpaceId) public override view returns (uint256 _price) {
+        DataTypes.TenantSpaceData memory tenantSpaceData = tenantSpaceDatas[_tenant][_tenantSpaceId];
         return tenantSpaceData.price;
     }
 

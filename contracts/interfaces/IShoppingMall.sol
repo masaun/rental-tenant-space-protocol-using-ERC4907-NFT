@@ -17,15 +17,15 @@ interface IShoppingMall {
     /**
      * @notice - A owner store a tenant space NFT for rent in a Shopping Mall
      * @dev - Caller is a owner who has a owner role of tenant space NFT
-     * @dev - [TODO]: Parameter of "tokenID" is better to rename as "tenantSpaceId"
+     * @dev - [TODO]: Parameter of "tenantSpaceId" is better to rename as "tenantSpaceId"
      */
-    function storeTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tokenId) external returns (uint);
-    //function storeTenantSpaceNFT(TenantSpaceNFT tenantSpaceNFT, uint tokenId) external returns (uint);
+    function storeTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tenantSpaceId) external returns (uint);
+    //function storeTenantSpaceNFT(TenantSpaceNFT tenantSpaceNFT, uint tenantSpaceId) external returns (uint);
 
     /*
      * @notice - A user rent a tenant space in a Shopping Mall.
      * @dev - Caller is a user who has user role of tenant space NFT
      */
-    function rentTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tokenId, address tenant, uint64 expires) external returns (bool);
+    function rentTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tenantSpaceId, address tenant, uint64 expires) external returns (bool);
 
 }

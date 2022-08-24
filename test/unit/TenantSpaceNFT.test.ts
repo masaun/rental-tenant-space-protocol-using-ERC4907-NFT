@@ -97,13 +97,13 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               let txReceipt: ContractReceipt = await tx.wait()
           })
 
-          it(`balanceOf() and ownerOf() - A owner1's wallet should has a TenantSpaceNFT of tokenID=0`, async () => {
+          it(`balanceOf() and ownerOf() - A owner1's wallet should has a TenantSpaceNFT of tenantSpaceId=0`, async () => {
               let TenantSpaceNFTBalanceOfOwner1  = await tenantSpaceNFT.balanceOf(OWNER_1)
               console.log(`TenantSpaceNFT balance of owner1: ${ TenantSpaceNFTBalanceOfOwner1 }`)
 
-              const tokenId = 0
-              let ownerOfTenantSpaceNFT = await tenantSpaceNFT.ownerOf(tokenId)
-              console.log(`Owner of TenantSpaceNFT of tokenID=0: ${ ownerOfTenantSpaceNFT }`)
+              const tenantSpaceId = 0
+              let ownerOfTenantSpaceNFT = await tenantSpaceNFT.ownerOf(tenantSpaceId)
+              console.log(`Owner of TenantSpaceNFT of tenantSpaceId=0: ${ ownerOfTenantSpaceNFT }`)
           })
 
           ///------------------------
@@ -117,13 +117,13 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               let tx1: ContractTransaction = await tenantSpaceNFT.connect(owner1).setApprovalForAll(TENANT_1, true)
 
               //@dev - Owner1 set tenant1 as a user role in the TenantSpaceNFT (ERC4907-based NFT) with an expiration period
-              const tokenId = 0
-              let tx2: ContractTransaction = await tenantSpaceNFT.connect(owner1).setUser(tokenId, TENANT_1, BigInt(expires))
+              const tenantSpaceId = 0
+              let tx2: ContractTransaction = await tenantSpaceNFT.connect(owner1).setUser(tenantSpaceId, TENANT_1, BigInt(expires))
           })
 
           it(`userOf() - tenant1 should has a user role of TenantSpaceNFT`, async () => {
-              const tokenId = 0
-              let walletAddressThatHasUserRole = await tenantSpaceNFT.userOf(tokenId)
+              const tenantSpaceId = 0
+              let walletAddressThatHasUserRole = await tenantSpaceNFT.userOf(tenantSpaceId)
               console.log(`Wallet address that has a user role of TenantSpaceNFT: ${ walletAddressThatHasUserRole }`)
 
               assert.equal(
@@ -135,8 +135,8 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
 
           it(`ownerOf() - owner1 should has a owner role of TenantSpaceNFT`, async () => {
               //[TODO]: 
-              const tokenId = 0
-              let walletAddressThatHasOwnerRole = await tenantSpaceNFT.ownerOf(tokenId)
+              const tenantSpaceId = 0
+              let walletAddressThatHasOwnerRole = await tenantSpaceNFT.ownerOf(tenantSpaceId)
               console.log(`Wallet address that has a owner role of TenantSpaceNFT: ${ walletAddressThatHasOwnerRole }`)
               assert.equal(
                   walletAddressThatHasOwnerRole,

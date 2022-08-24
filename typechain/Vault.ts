@@ -104,7 +104,7 @@ export interface Vault extends BaseContract {
 
     deposit(
       _amount: BigNumberish,
-      _tokenId: BigNumberish,
+      _tenantSpaceId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -126,7 +126,7 @@ export interface Vault extends BaseContract {
 
   deposit(
     _amount: BigNumberish,
-    _tokenId: BigNumberish,
+    _tenantSpaceId: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -148,7 +148,7 @@ export interface Vault extends BaseContract {
 
     deposit(
       _amount: BigNumberish,
-      _tokenId: BigNumberish,
+      _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -170,7 +170,7 @@ export interface Vault extends BaseContract {
 
     deposit(
       _amount: BigNumberish,
-      _tokenId: BigNumberish,
+      _tenantSpaceId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -196,7 +196,7 @@ export interface Vault extends BaseContract {
 
     deposit(
       _amount: BigNumberish,
-      _tokenId: BigNumberish,
+      _tenantSpaceId: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
