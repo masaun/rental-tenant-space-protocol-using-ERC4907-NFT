@@ -23,15 +23,15 @@ contract TenantSpaceNFTFactory is ITenantSpaceNFTFactory {
 
     /**
      * @notice - Create a new TenantSpaceNFT
-     * @dev - Only owner of shopping mall can execute this method
+     * @dev - Only tenant owner of shopping mall can execute this method
      */ 
     function createTenantSpaceNFT(string memory name, string memory symbol) public override {
         TenantSpaceNFT tenantSpaceNFT = new TenantSpaceNFT(name, symbol);
         tenantSpaceNFTs.push(address(tenantSpaceNFT));
 
-        //[TODO]: Transfer ownership of NFT into owner's wallet address
-        address owner = msg.sender;
-        emit Events.TenantSpaceNFTCreated(owner, tenantSpaceNFT);
+        //[TODO]: Transfer ownership of NFT into a tenant owner's wallet address
+        address tenantOwner = msg.sender;
+        emit Events.TenantSpaceNFTCreated(tenantOwner, tenantSpaceNFT);
     }
 
 }

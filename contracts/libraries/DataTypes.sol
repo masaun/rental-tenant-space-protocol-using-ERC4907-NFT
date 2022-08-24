@@ -10,8 +10,9 @@ library DataTypes {
      * @notice - Tenant space data
      */ 
     struct TenantSpaceData {
-        address tenant;
-        uint256 price;   // price for tenant
+        address tenantOwner;
+        address tenantUser;
+        uint256 price;   // a tenant price
     }
 
     /**

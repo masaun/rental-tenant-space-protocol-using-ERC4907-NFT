@@ -170,7 +170,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_tenant",
+        name: "_tenantOwner",
         type: "address",
       },
       {
@@ -319,7 +319,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_tenant",
+        name: "_tenantOwner",
         type: "address",
       },
       {

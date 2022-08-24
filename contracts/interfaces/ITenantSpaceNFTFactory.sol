@@ -15,7 +15,7 @@ interface ITenantSpaceNFTFactory {
     function createTenantSpaceNFT(string memory name, string memory symbol) external;
 
     event TenantSpaceNFTCreated(
-        address owner, 
+        address tenantOwner, 
         ITenantSpaceNFT tenantSpaceNFT
     );
 

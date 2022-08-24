@@ -215,7 +215,7 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<[string] & { operator: string }>;
 
     getPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { _price: BigNumber }>;
@@ -258,7 +258,7 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<ContractTransaction>;
 
     setPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -305,7 +305,7 @@ export interface ITenantSpaceNFT extends BaseContract {
   ): Promise<string>;
 
   getPrice(
-    _tenant: string,
+    _tenantOwner: string,
     _tenantSpaceId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -345,7 +345,7 @@ export interface ITenantSpaceNFT extends BaseContract {
   ): Promise<ContractTransaction>;
 
   setPrice(
-    _tenant: string,
+    _tenantOwner: string,
     _tenantSpaceId: BigNumberish,
     _price: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
@@ -392,7 +392,7 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<string>;
 
     getPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -429,7 +429,7 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<void>;
 
     setPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: CallOverrides
@@ -523,7 +523,7 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     getPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -566,7 +566,7 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     setPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -620,7 +620,7 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -663,7 +663,7 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     setPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }

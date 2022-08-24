@@ -42,8 +42,8 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     /**
      * @notice - Set a price of a tenant NFT
      */
-    function setPrice(address _tenant, uint256 _tenantSpaceId, uint256 _price) public override {
-        DataTypes.TenantSpaceData storage tenantSpaceData = tenantSpaceDatas[_tenant][_tenantSpaceId];
+    function setPrice(address _tenantOwner, uint256 _tenantSpaceId, uint256 _price) public override {
+        DataTypes.TenantSpaceData storage tenantSpaceData = tenantSpaceDatas[_tenantOwner][_tenantSpaceId];
         tenantSpaceData.price = _price;
     }
 
@@ -55,8 +55,8 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     /**
      * @notice - Get a price of a tenant NFT
      */
-    function getPrice(address _tenant, uint256 _tenantSpaceId) public override view returns (uint256 _price) {
-        DataTypes.TenantSpaceData memory tenantSpaceData = tenantSpaceDatas[_tenant][_tenantSpaceId];
+    function getPrice(address _tenantOwner, uint256 _tenantSpaceId) public override view returns (uint256 _price) {
+        DataTypes.TenantSpaceData memory tenantSpaceData = tenantSpaceDatas[_tenantOwner][_tenantSpaceId];
         return tenantSpaceData.price;
     }
 

@@ -233,7 +233,7 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<[string]>;
 
     getPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { _price: BigNumber }>;
@@ -278,7 +278,7 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<ContractTransaction>;
 
     setPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -302,7 +302,13 @@ export interface TenantSpaceNFT extends BaseContract {
       arg0: string,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { tenant: string; price: BigNumber }>;
+    ): Promise<
+      [string, string, BigNumber] & {
+        tenantOwner: string;
+        tenantUser: string;
+        price: BigNumber;
+      }
+    >;
 
     tokenURI(
       tokenId: BigNumberish,
@@ -338,7 +344,7 @@ export interface TenantSpaceNFT extends BaseContract {
   ): Promise<string>;
 
   getPrice(
-    _tenant: string,
+    _tenantOwner: string,
     _tenantSpaceId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -380,7 +386,7 @@ export interface TenantSpaceNFT extends BaseContract {
   ): Promise<ContractTransaction>;
 
   setPrice(
-    _tenant: string,
+    _tenantOwner: string,
     _tenantSpaceId: BigNumberish,
     _price: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
@@ -404,7 +410,13 @@ export interface TenantSpaceNFT extends BaseContract {
     arg0: string,
     arg1: BigNumberish,
     overrides?: CallOverrides
-  ): Promise<[string, BigNumber] & { tenant: string; price: BigNumber }>;
+  ): Promise<
+    [string, string, BigNumber] & {
+      tenantOwner: string;
+      tenantUser: string;
+      price: BigNumber;
+    }
+  >;
 
   tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -437,7 +449,7 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<string>;
 
     getPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -476,7 +488,7 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<void>;
 
     setPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: CallOverrides
@@ -500,7 +512,13 @@ export interface TenantSpaceNFT extends BaseContract {
       arg0: string,
       arg1: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string, BigNumber] & { tenant: string; price: BigNumber }>;
+    ): Promise<
+      [string, string, BigNumber] & {
+        tenantOwner: string;
+        tenantUser: string;
+        price: BigNumber;
+      }
+    >;
 
     tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -580,7 +598,7 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     getPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -625,7 +643,7 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     setPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -692,7 +710,7 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -737,7 +755,7 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     setPrice(
-      _tenant: string,
+      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }

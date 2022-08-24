@@ -21,7 +21,7 @@ const _abi = [
       },
       {
         internalType: "address",
-        name: "tenant",
+        name: "tenantUser",
         type: "address",
       },
       {
