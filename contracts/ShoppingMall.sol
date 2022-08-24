@@ -5,7 +5,7 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import { IShoppingMall } from "./interfaces/IShoppingMall.sol";
 import { ITenantSpaceNFT } from "./interfaces/ITenantSpaceNFT.sol";
-import { ITenantSpaceNFTFactory } from "./interfaces/ITenantSpaceNFTFactory.sol";
+//import { ITenantSpaceNFTFactory } from "./interfaces/ITenantSpaceNFTFactory.sol";
 //import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
 //import { TenantSpaceNFTFactory } from "./TenantSpaceNFTFactory.sol";
 
@@ -16,24 +16,34 @@ import { ITenantSpaceNFTFactory } from "./interfaces/ITenantSpaceNFTFactory.sol"
  */ 
 contract ShoppingMall is IShoppingMall {
 
-    ITenantSpaceNFTFactory public immutable tenantSpaceNFTFactory;
+    //ITenantSpaceNFTFactory public immutable tenantSpaceNFTFactory;
 
-    constructor(ITenantSpaceNFTFactory _tenantSpaceNFTFactory) {
-        tenantSpaceNFTFactory = _tenantSpaceNFTFactory;
+    constructor() {
+    //constructor(ITenantSpaceNFTFactory _tenantSpaceNFTFactory) {
+        //tenantSpaceNFTFactory = _tenantSpaceNFTFactory;
     }
 
     /**
      * @notice - A owner create a tenant space NFT for rent in a Shopping Mall
      */
-    function createTenantSpaceNFT(string memory name_, string memory symbol_) public override returns (uint) {
-        //[TODO]:
-        tenantSpaceNFTFactory.createTenantSpaceNFT(name_, symbol_);
+    // function createTenantSpaceNFT(string memory name_, string memory symbol_) public override returns (uint) {
+    //     //[TODO]:
+    //     tenantSpaceNFTFactory.createTenantSpaceNFT(name_, symbol_);
+    // }
+
+    /**
+     * @notice - A owner store a tenant space NFT for rent in a Shopping Mall
+     * @dev - Caller is a owner who has a owner role of tenant space NFT
+     */
+    function storeTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT) public override returns (uint) {
+        //[TODO]: 
     }
 
-    /*
-     * @notice - A user rent a tenant space in a Shopping Mall.
+    /**
+     * @notice - A user rent a tenant space (NFT) from its owner in a Shopping Mall.
+     * @dev - Caller is a user who has user role of tenant space NFT
      */
-    function rentTenantSpace() public override returns (uint) {
+    function rentTenantSpaceNFT() public override returns (uint) {
         //[TODO]:
     }
 
