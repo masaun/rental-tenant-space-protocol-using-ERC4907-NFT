@@ -4,8 +4,10 @@ pragma solidity ^0.8.0;
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 import { IShoppingMall } from "./interfaces/IShoppingMall.sol";
-import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
-import { TenantSpaceNFTFactory } from "./TenantSpaceNFTFactory.sol";
+import { ITenantSpaceNFT } from "./interfaces/ITenantSpaceNFT.sol";
+import { ITenantSpaceNFTFactory } from "./interfaces/ITenantSpaceNFTFactory.sol";
+//import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
+//import { TenantSpaceNFTFactory } from "./TenantSpaceNFTFactory.sol";
 
 
 /**
@@ -14,9 +16,9 @@ import { TenantSpaceNFTFactory } from "./TenantSpaceNFTFactory.sol";
  */ 
 contract ShoppingMall is IShoppingMall {
 
-    TenantSpaceNFTFactory public immutable tenantSpaceNFTFactory;
+    ITenantSpaceNFTFactory public immutable tenantSpaceNFTFactory;
 
-    constructor(TenantSpaceNFTFactory _tenantSpaceNFTFactory) {
+    constructor(ITenantSpaceNFTFactory _tenantSpaceNFTFactory) {
         tenantSpaceNFTFactory = _tenantSpaceNFTFactory;
     }
 
