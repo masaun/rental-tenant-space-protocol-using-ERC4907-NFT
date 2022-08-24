@@ -21,6 +21,10 @@ contract TenantSpaceNFTFactory is ITenantSpaceNFTFactory {
 
     constructor() {}
 
+    /**
+     * @notice - Create a new TenantSpaceNFT
+     * @dev - Only owner of shopping mall can execute this method
+     */ 
     function createTenantSpaceNFT(string memory name, string memory symbol) public override {
         TenantSpaceNFT tenantSpaceNFT = new TenantSpaceNFT(name, symbol);
         tenantSpaceNFTs.push(address(tenantSpaceNFT));

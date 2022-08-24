@@ -8,13 +8,34 @@ import type { IShoppingMall, IShoppingMallInterface } from "../IShoppingMall";
 
 const _abi = [
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "contract ITenantSpaceNFT",
+        name: "tenantSpaceNFT",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "tenant",
+        type: "address",
+      },
+      {
+        internalType: "uint64",
+        name: "expires",
+        type: "uint64",
+      },
+    ],
     name: "rentTenantSpaceNFT",
     outputs: [
       {
-        internalType: "uint256",
+        internalType: "bool",
         name: "",
-        type: "uint256",
+        type: "bool",
       },
     ],
     stateMutability: "nonpayable",

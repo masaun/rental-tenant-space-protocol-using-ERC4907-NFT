@@ -20,13 +20,13 @@ import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 export interface ShoppingMallInterface extends utils.Interface {
   contractName: "ShoppingMall";
   functions: {
-    "rentTenantSpaceNFT()": FunctionFragment;
+    "rentTenantSpaceNFT(address,uint256,address,uint64)": FunctionFragment;
     "storeTenantSpaceNFT(address,uint256)": FunctionFragment;
   };
 
   encodeFunctionData(
     functionFragment: "rentTenantSpaceNFT",
-    values?: undefined
+    values: [string, BigNumberish, string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "storeTenantSpaceNFT",
@@ -74,6 +74,10 @@ export interface ShoppingMall extends BaseContract {
 
   functions: {
     rentTenantSpaceNFT(
+      tenantSpaceNFT: string,
+      tokenId: BigNumberish,
+      tenant: string,
+      expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -85,6 +89,10 @@ export interface ShoppingMall extends BaseContract {
   };
 
   rentTenantSpaceNFT(
+    tenantSpaceNFT: string,
+    tokenId: BigNumberish,
+    tenant: string,
+    expires: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -95,7 +103,13 @@ export interface ShoppingMall extends BaseContract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
-    rentTenantSpaceNFT(overrides?: CallOverrides): Promise<BigNumber>;
+    rentTenantSpaceNFT(
+      tenantSpaceNFT: string,
+      tokenId: BigNumberish,
+      tenant: string,
+      expires: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
 
     storeTenantSpaceNFT(
       tenantSpaceNFT: string,
@@ -108,6 +122,10 @@ export interface ShoppingMall extends BaseContract {
 
   estimateGas: {
     rentTenantSpaceNFT(
+      tenantSpaceNFT: string,
+      tokenId: BigNumberish,
+      tenant: string,
+      expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -120,6 +138,10 @@ export interface ShoppingMall extends BaseContract {
 
   populateTransaction: {
     rentTenantSpaceNFT(
+      tenantSpaceNFT: string,
+      tokenId: BigNumberish,
+      tenant: string,
+      expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

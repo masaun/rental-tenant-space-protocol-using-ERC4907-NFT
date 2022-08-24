@@ -26,6 +26,6 @@ interface IShoppingMall {
      * @notice - A user rent a tenant space in a Shopping Mall.
      * @dev - Caller is a user who has user role of tenant space NFT
      */
-    function rentTenantSpaceNFT() external returns (uint);
+    function rentTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tokenId, address tenant, uint64 expires) external returns (bool);
 
 }
