@@ -106,4 +106,21 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               console.log(`Owner of TenantSpaceNFT of tokenID=0: ${ ownerOfTenantSpaceNFT }`)
           })
 
+          ///------------------------
+          /// ERC4907 related method
+          ///------------------------
+          it(`setApprovalForAll() and setUser() - Owner1 should approve tenant1. Then, owner1 set tenant1 as a user role`, async () => {
+              //[TODO]: 
+              //@dev - Calculate expiration period
+              let expires = Math.floor(new Date().getTime()/1000) + 1000
+
+              //@dev - Owner1 approve tenant1 for the TenantSpaceNFT (ERC4907-based NFT)
+              let tx1: ContractTransaction = await tenantSpaceNFT.connect(owner1).setApprovalForAll(TENANT_1, true)
+
+              //@dev - Owner1 set tenant1 as a user role in the TenantSpaceNFT (ERC4907-based NFT)
+              const tokenId = 0
+              let tx2: ContractTransaction = await tenantSpaceNFT.connect(owner1).setUser(tokenId, TENANT_1, BigInt(expires))
+          })
+
+
       })
