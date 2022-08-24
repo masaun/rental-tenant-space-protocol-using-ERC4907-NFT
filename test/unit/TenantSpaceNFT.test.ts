@@ -109,18 +109,32 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           ///------------------------
           /// ERC4907 related method
           ///------------------------
-          it(`setApprovalForAll() and setUser() - Owner1 should approve tenant1. Then, owner1 set tenant1 as a user role`, async () => {
-              //[TODO]: 
-              //@dev - Calculate expiration period
+          it(`setApprovalForAll() and setUser() - Owner1 should approve tenant1. Then, owner1 set tenant1 as a user role with an expiration period`, async () => {
+              //@dev - Assign an expiration period
               let expires = Math.floor(new Date().getTime()/1000) + 1000
 
               //@dev - Owner1 approve tenant1 for the TenantSpaceNFT (ERC4907-based NFT)
               let tx1: ContractTransaction = await tenantSpaceNFT.connect(owner1).setApprovalForAll(TENANT_1, true)
 
-              //@dev - Owner1 set tenant1 as a user role in the TenantSpaceNFT (ERC4907-based NFT)
+              //@dev - Owner1 set tenant1 as a user role in the TenantSpaceNFT (ERC4907-based NFT) with an expiration period
               const tokenId = 0
               let tx2: ContractTransaction = await tenantSpaceNFT.connect(owner1).setUser(tokenId, TENANT_1, BigInt(expires))
           })
 
+          it(`userOf() - tenant1 should has a user role of TenantSpaceNFT`, async () => {
+              const tokenId = 0
+              let walletAddressThatHasUserRole = await tenantSpaceNFT.userOf(tokenId)
+              console.log(`Wallet address that has a user role of TenantSpaceNFT: ${ walletAddressThatHasUserRole }`)
+
+              assert.equal(
+                  walletAddressThatHasUserRole,
+                  TENANT_1,
+                  "tenant1 should has a user role of TenantSpaceNFT"
+              )
+          })
+
+          it(`ownerOf() - Owner of TenantSpaceNFT should be owner1's wallet address`, async () => {
+              //[TODO]: 
+          })
 
       })
