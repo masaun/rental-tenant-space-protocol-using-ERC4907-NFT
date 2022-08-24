@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-//import { ITenantSpaceNFT } from "./ITenantSpaceNFT.sol";
-import { TenantSpaceNFT } from "../TenantSpaceNFT.sol";
+import { ITenantSpaceNFT } from "./ITenantSpaceNFT.sol";
+//import { TenantSpaceNFT } from "../TenantSpaceNFT.sol";
 
 import { DataTypes } from '../libraries/DataTypes.sol';
 
@@ -19,7 +19,8 @@ interface IShoppingMall {
      * @dev - Caller is a owner who has a owner role of tenant space NFT
      * @dev - [TODO]: Parameter of "tokenID" is better to rename as "tenantSpaceId"
      */
-    function storeTenantSpaceNFT(TenantSpaceNFT tenantSpaceNFT, uint tokenId) external returns (uint);
+    function storeTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tokenId) external returns (uint);
+    //function storeTenantSpaceNFT(TenantSpaceNFT tenantSpaceNFT, uint tokenId) external returns (uint);
 
     /*
      * @notice - A user rent a tenant space in a Shopping Mall.

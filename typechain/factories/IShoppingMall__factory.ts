@@ -23,7 +23,7 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "contract TenantSpaceNFT",
+        internalType: "contract ITenantSpaceNFT",
         name: "tenantSpaceNFT",
         type: "address",
       },

@@ -33,7 +33,8 @@ contract ShoppingMall is IShoppingMall {
      * @dev - Caller is a owner who has a owner role of tenant space NFT
      * @dev - [TODO]: Parameter of "tokenID" is better to rename as "tenantSpaceId"
      */
-    function storeTenantSpaceNFT(TenantSpaceNFT tenantSpaceNFT, uint tokenId) public override returns (uint) {
+    function storeTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tokenId) public override returns (uint) {
+    //function storeTenantSpaceNFT(TenantSpaceNFT tenantSpaceNFT, uint tokenId) public override returns (uint) {
         //@dev - NOTE: A owner of TenantSpaceNFT must approve this contract before transferring its TenantSpaceNFT
         address owner = msg.sender;
         tenantSpaceNFT.transferFrom(owner, address(this), tokenId);
