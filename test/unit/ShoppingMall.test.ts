@@ -134,7 +134,6 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           })
 
           it(`ownerOf() - tenantOwner1 should has a owner role of TenantSpaceNFT`, async () => {
-              //[TODO]: 
               const tenantSpaceId = 0
               let walletAddressThatHasOwnerRole = await tenantSpaceNFT.ownerOf(tenantSpaceId)
               console.log(`Wallet address that has a owner role of TenantSpaceNFT: ${ walletAddressThatHasOwnerRole }`)
@@ -143,6 +142,18 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
                   TENANT_OWNER_1,
                   "tenantOwner1 should has a owner role of TenantSpaceNFT"
               )
+          })
+
+
+          ///-----------------------------------------
+          /// [TODO]: Methods of ShoppingMall.sol
+          ///-----------------------------------------
+          it(`storeTenantSpaceNFT() -  A tenant owner should store a tenant space NFT for rent onto the Shopping Mall contract (ShoppingMall.sol)`, async () => {
+              //[TODO]: 
+          })
+
+          it(`rentTenantSpaceNFT() -  A tenant user rent a tenant space (NFT) from its tenant owner in the Shopping Mall contract (ShoppingMall.sol)`, async () => {
+              //[TODO]: 
           })
 
       })

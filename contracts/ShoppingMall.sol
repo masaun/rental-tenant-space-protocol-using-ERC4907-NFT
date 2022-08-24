@@ -29,7 +29,7 @@ contract ShoppingMall is IShoppingMall {
     // }
 
     /**
-     * @notice - A owner store a tenant space NFT for rent in a Shopping Mall
+     * @notice - A tenant owner store a tenant space NFT for rent in a Shopping Mall
      * @dev - Caller is a owner who has a owner role of tenant space NFT
      */
     function storeTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tenantSpaceId) public override returns (uint) {
@@ -40,7 +40,7 @@ contract ShoppingMall is IShoppingMall {
     }
 
     /**
-     * @notice - A user rent a tenant space (NFT) from its owner in a Shopping Mall.
+     * @notice - A tenant user rent a tenant space (NFT) from its tenant owner in a Shopping Mall.
      * @dev - Caller is a user who has user role of tenant space NFT
      * @param expires - Uint64 is required as an expiration period of TenantSpaceNFT (ERC4907-based NFT)
      */
