@@ -33,6 +33,7 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     VRFCoordinatorV2Mock public vrfCoordinatorV2;
 
     mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: TenantSpaceNFT contract address -> tenantSpaceId -> the TenantSpaceData struct
+    mapping (uint => mapping(address => uint64)) public tenantSpaceNFTAssociatedRandomNumbers;   // [Key]: tenantSpaceId -> tenantUser -> expires
 
     constructor(string memory name_, string memory symbol_, IRandomNumberGeneratorV2 _rngV2, VRFCoordinatorV2Mock _vrfCoordinatorV2) ERC4907(name_,symbol_) {
         rngV2 = _rngV2;
@@ -56,6 +57,9 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
         //@dev - [TODO]: Retrieve a random number via Chainlink-VRF
         uint256[] memory randomNumbers = _getRandomNumbers();
         uint256 randomNumber = randomNumbers[0];
+
+        //@dev - [TODO / TO BE CONSIDERED]: Store a random number into mapping
+        tenantSpaceNFTAssociatedRandomNumbers[tenantSpaceId, tenantUser, expires] = randomNumber;
 
         //@dev - [NOTE]: A caller of setUser() method become this contract
         setUser(tenantSpaceId, tenantUser, expires);
