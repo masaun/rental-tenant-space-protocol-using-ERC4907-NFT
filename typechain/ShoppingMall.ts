@@ -76,7 +76,7 @@ export interface ShoppingMall extends BaseContract {
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
-      tenant: string,
+      tenantUser: string,
       expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
@@ -91,7 +91,7 @@ export interface ShoppingMall extends BaseContract {
   rentTenantSpaceNFT(
     tenantSpaceNFT: string,
     tenantSpaceId: BigNumberish,
-    tenant: string,
+    tenantUser: string,
     expires: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
@@ -106,7 +106,7 @@ export interface ShoppingMall extends BaseContract {
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
-      tenant: string,
+      tenantUser: string,
       expires: BigNumberish,
       overrides?: CallOverrides
     ): Promise<boolean>;
@@ -124,7 +124,7 @@ export interface ShoppingMall extends BaseContract {
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
-      tenant: string,
+      tenantUser: string,
       expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
@@ -140,7 +140,7 @@ export interface ShoppingMall extends BaseContract {
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
-      tenant: string,
+      tenantUser: string,
       expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;

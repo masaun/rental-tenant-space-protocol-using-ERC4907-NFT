@@ -35,7 +35,7 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           let TENANT_USER_2: string
 
           //@dev - Variables for assigning contract instances
-          let shoppinngMall: ShoppingMall
+          let shoppingMall: ShoppingMall
           let tenantSpaceNFT: TenantSpaceNFT
           let tenantSpaceNFTFactory: TenantSpaceNFTFactory
           let linkToken: LinkToken

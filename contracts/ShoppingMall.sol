@@ -46,10 +46,10 @@ contract ShoppingMall is IShoppingMall {
      */
     function rentTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tenantSpaceId, address tenantUser, uint64 expires) public override returns (bool) {
         //@dev - Owner approve a tenant for the TenantSpaceNFT (ERC4907-based NFT)
-        tenantSpaceNFT.setApprovalForAll(tenant, true);
+        tenantSpaceNFT.setApprovalForAll(tenantUser, true);
 
         //@dev - Owner set a tenant as a user role in the TenantSpaceNFT (ERC4907-based NFT) with an expiration period
-        tenantSpaceNFT.setUser(tenantSpaceId, tenant, expires);
+        tenantSpaceNFT.setUser(tenantSpaceId, tenantUser, expires);
     }
 
 
