@@ -29,7 +29,7 @@ export interface ITenantSpaceNFTInterface extends utils.Interface {
     "ownerOf(uint256)": FunctionFragment;
     "safeTransferFrom(address,address,uint256)": FunctionFragment;
     "setApprovalForAll(address,bool)": FunctionFragment;
-    "setPrice(address,uint256,uint256)": FunctionFragment;
+    "setPrice(uint256,uint256)": FunctionFragment;
     "setUser(uint256,address,uint64)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
@@ -69,7 +69,7 @@ export interface ITenantSpaceNFTInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "setPrice",
-    values: [string, BigNumberish, BigNumberish]
+    values: [BigNumberish, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setUser",
@@ -258,7 +258,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<ContractTransaction>;
 
     setPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -345,7 +344,6 @@ export interface ITenantSpaceNFT extends BaseContract {
   ): Promise<ContractTransaction>;
 
   setPrice(
-    _tenantOwner: string,
     _tenantSpaceId: BigNumberish,
     _price: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
@@ -429,7 +427,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<void>;
 
     setPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: CallOverrides
@@ -566,7 +563,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     setPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -663,7 +659,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     setPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       _price: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }

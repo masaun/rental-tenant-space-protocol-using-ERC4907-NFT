@@ -25,7 +25,7 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     using Counters for Counters.Counter;
     Counters.Counter private _tenantSpaceIds;
 
-    mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: Tenant address -> tenantSpaceId -> the TenantData struct
+    mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: TenantSpaceNFT contract address -> tenantSpaceId -> the TenantSpaceData struct
 
     constructor(string memory name_, string memory symbol_) ERC4907(name_,symbol_) {
         //[TODO]: 
@@ -40,10 +40,12 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
 
 
     /**
-     * @notice - Set a price of a tenant NFT
+     * @notice - Set a price of a tenant space NFT
+     * @dev - Only a tenant space owner can set price
      */
-    function setPrice(address _tenantOwner, uint256 _tenantSpaceId, uint256 _price) public override {
-        DataTypes.TenantSpaceData storage tenantSpaceData = tenantSpaceDatas[_tenantOwner][_tenantSpaceId];
+    function setPrice(uint256 _tenantSpaceId, uint256 _price) public override {
+        require(msg.sender == ownerOf(_tenantSpaceId), "Only a tenant space owner can set price");
+        DataTypes.TenantSpaceData storage tenantSpaceData = tenantSpaceDatas[address(this)][_tenantSpaceId];
         tenantSpaceData.price = _price;
     }
 

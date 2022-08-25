@@ -152,7 +152,7 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
 
 
           ///-----------------------------------------
-          /// [TODO]: Methods of ShoppingMall.sol
+          /// Methods of ShoppingMall.sol
           ///-----------------------------------------
           it(`storeTenantSpaceNFT() - A tenant owner should store a tenant space NFT for rent onto the Shopping Mall contract (ShoppingMall.sol)`, async () => {
               //[TODO]: 
