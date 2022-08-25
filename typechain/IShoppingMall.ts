@@ -9,6 +9,7 @@ import {
   CallOverrides,
   ContractTransaction,
   Overrides,
+  PayableOverrides,
   PopulatedTransaction,
   Signer,
   utils,
@@ -20,13 +21,13 @@ import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 export interface IShoppingMallInterface extends utils.Interface {
   contractName: "IShoppingMall";
   functions: {
-    "rentTenantSpaceNFT(address,uint256,address,uint64)": FunctionFragment;
+    "rentTenantSpaceNFT(address,uint256,address,address,uint64)": FunctionFragment;
     "storeTenantSpaceNFT(address,uint256)": FunctionFragment;
   };
 
   encodeFunctionData(
     functionFragment: "rentTenantSpaceNFT",
-    values: [string, BigNumberish, string, BigNumberish]
+    values: [string, BigNumberish, string, string, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "storeTenantSpaceNFT",
@@ -76,9 +77,10 @@ export interface IShoppingMall extends BaseContract {
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
+      tenantOwner: string,
       tenantUser: string,
       expires: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
     storeTenantSpaceNFT(
@@ -91,9 +93,10 @@ export interface IShoppingMall extends BaseContract {
   rentTenantSpaceNFT(
     tenantSpaceNFT: string,
     tenantSpaceId: BigNumberish,
+    tenantOwner: string,
     tenantUser: string,
     expires: BigNumberish,
-    overrides?: Overrides & { from?: string | Promise<string> }
+    overrides?: PayableOverrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   storeTenantSpaceNFT(
@@ -106,6 +109,7 @@ export interface IShoppingMall extends BaseContract {
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
+      tenantOwner: string,
       tenantUser: string,
       expires: BigNumberish,
       overrides?: CallOverrides
@@ -124,9 +128,10 @@ export interface IShoppingMall extends BaseContract {
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
+      tenantOwner: string,
       tenantUser: string,
       expires: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     storeTenantSpaceNFT(
@@ -140,9 +145,10 @@ export interface IShoppingMall extends BaseContract {
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
+      tenantOwner: string,
       tenantUser: string,
       expires: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     storeTenantSpaceNFT(

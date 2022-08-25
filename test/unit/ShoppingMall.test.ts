@@ -165,9 +165,10 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               const tenantSpaceId = 0
 
               //@dev - Calculate expiration period
-              let expires = Math.floor(new Date().getTime()/1000) + 1000
-
-              let tx: ContractTransaction = await shoppingMall.connect(tenantUser1).rentTenantSpaceNFT(TENANT_SPACE_NFT, tenantSpaceId, TENANT_USER_1, expires)
+              const expires = Math.floor(new Date().getTime()/1000) + 1000
+              const _tenantOwner: string = await tenantSpaceNFT.ownerOf(tenantSpaceId);
+              const _tenantUser: string = await tenantSpaceNFT.userOf(tenantSpaceId);
+              let tx: ContractTransaction = await shoppingMall.connect(tenantUser1).rentTenantSpaceNFT(TENANT_SPACE_NFT, tenantSpaceId, _tenantOwner, _tenantUser, expires)
           })
 
       })

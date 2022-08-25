@@ -20,6 +20,11 @@ const _abi = [
         type: "uint256",
       },
       {
+        internalType: "address payable",
+        name: "tenantOwner",
+        type: "address",
+      },
+      {
         internalType: "address",
         name: "tenantUser",
         type: "address",
@@ -38,7 +43,7 @@ const _abi = [
         type: "bool",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "payable",
     type: "function",
   },
   {
