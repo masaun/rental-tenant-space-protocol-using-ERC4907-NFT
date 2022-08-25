@@ -31,11 +31,24 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
         //[TODO]: 
     }
 
+    /**
+     * @notice - Mint a new tokenId of this TenantSpaceNFT
+     */
     function mint(address to) public override {
         uint newTenantSpaceId = _tenantSpaceIds.current();  // tenantSpaceId is counted from 0 
         _mint(to, newTenantSpaceId);
 
         _tenantSpaceIds.increment();
+    }
+
+    /**
+     * @notice - Set the user and expires of this TenantSpaceNFT
+     */
+    function setUserWithRandomNumber(uint256 tenantSpaceId, address tenantSpaceUser, uint64 expires) public {
+        //@dev - [TODO]: Retrieve a random number via Chainlink-VRF
+
+        //@dev - [NOTE]: A caller of setUser() method become this contract
+        setUser(tenantSpaceId, tenantSpaceUser, expires);
     }
 
 
