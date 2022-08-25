@@ -80,9 +80,9 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               VRF_COORDINATOR_V2_MOCK = vrfCoordinatorV2Mock.address
               console.log(`\n##### Deployed-contract address of the VRFCoordinatorV2Mock.sol: ${ VRF_COORDINATOR_V2_MOCK } ######`)
 
-              priceConsumerV3 = await ethers.getContract("PriceConsumerV3")
-              PRICE_CONSUMER_V3 = priceConsumerV3.address
-              console.log(`\n##### Deployed-contract address of the PriceConsumerV3.sol: ${ PRICE_CONSUMER_V3 } ######`)
+              // priceConsumerV3 = await ethers.getContract("PriceConsumerV3")
+              // PRICE_CONSUMER_V3 = priceConsumerV3.address
+              // console.log(`\n##### Deployed-contract address of the PriceConsumerV3.sol: ${ PRICE_CONSUMER_V3 } ######`)
           })
 
           it(`createTenantSpaceNFT() - Should be successful to create a new TenantSpaceNFT`, async () => {
@@ -186,8 +186,8 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               const tenantSpaceId = 0
 
               //@dev - Retrieve ETH/USD price via Chainlink's price feed
-              let priceInETHPerUSD = priceConsumerV3.getLatestPrice()
-              console.log(`Price in ETH per USD (via Chainlink PriceFeed): ${ priceInETHPerUSD }`)
+              //let priceInETHPerUSD = priceConsumerV3.getLatestPrice()
+              //console.log(`Price in ETH per USD (via Chainlink PriceFeed): ${ priceInETHPerUSD }`)
 
               //@dev - Calculate expiration period
               const expires = Math.floor(new Date().getTime()/1000) + 1000
