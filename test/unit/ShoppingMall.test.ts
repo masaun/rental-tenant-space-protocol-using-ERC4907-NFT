@@ -35,6 +35,7 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           let TENANT_USER_2: string
 
           //@dev - Variables for assigning contract instances
+          let shoppinngMall: ShoppingMall
           let tenantSpaceNFT: TenantSpaceNFT
           let tenantSpaceNFTFactory: TenantSpaceNFTFactory
           let linkToken: LinkToken
@@ -42,6 +43,7 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           let vrfCoordinatorV2Mock: VRFCoordinatorV2Mock
 
           //@dev - Variables for assigning deployed-addresses
+          let SHOPPING_MALL: string
           let TENANT_SPACE_NFT: string
           let TENANT_SPACE_NFT_FACTORY: string
           let VRF_COORDINATOR_V2_MOCK: string
@@ -63,6 +65,10 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               tenantSpaceNFTFactory = await ethers.getContract("TenantSpaceNFTFactory")
               TENANT_SPACE_NFT_FACTORY = tenantSpaceNFTFactory.address
               console.log(`\n##### Deployed-contract address of the TenantSpaceNFTFactory.sol: ${ TENANT_SPACE_NFT_FACTORY } ######`)
+
+              shoppingMall = await ethers.getContract("ShoppingMall")
+              SHOPPING_MALL = shoppingMall.address
+              console.log(`\n##### Deployed-contract address of the ShoppingMall.sol: ${ SHOPPING_MALL } ######`)
 
               linkToken = await ethers.getContract("LinkToken")
               const linkTokenAddress: string = linkToken.address
@@ -148,12 +154,14 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           ///-----------------------------------------
           /// [TODO]: Methods of ShoppingMall.sol
           ///-----------------------------------------
-          it(`storeTenantSpaceNFT() -  A tenant owner should store a tenant space NFT for rent onto the Shopping Mall contract (ShoppingMall.sol)`, async () => {
+          it(`storeTenantSpaceNFT() - A tenant owner should store a tenant space NFT for rent onto the Shopping Mall contract (ShoppingMall.sol)`, async () => {
               //[TODO]: 
+              let tx: ContractTransaction = await shoppingMall.connect(tenantOwner1).storeTenantSpaceNFT()
           })
 
-          it(`rentTenantSpaceNFT() -  A tenant user rent a tenant space (NFT) from its tenant owner in the Shopping Mall contract (ShoppingMall.sol)`, async () => {
+          it(`rentTenantSpaceNFT() - A tenant user should rent a tenant space (NFT) from its tenant owner in the Shopping Mall contract (ShoppingMall.sol)`, async () => {
               //[TODO]: 
+              let tx: ContractTransaction = await shoppingMall.connect(tenantUser1).rentTenantSpaceNFT()
           })
 
       })

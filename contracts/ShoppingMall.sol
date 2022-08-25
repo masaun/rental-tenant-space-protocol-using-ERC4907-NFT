@@ -44,7 +44,7 @@ contract ShoppingMall is IShoppingMall {
      * @dev - Caller is a user who has user role of tenant space NFT
      * @param expires - Uint64 is required as an expiration period of TenantSpaceNFT (ERC4907-based NFT)
      */
-    function rentTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tenantSpaceId, address tenant, uint64 expires) public override returns (bool) {
+    function rentTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tenantSpaceId, address tenantUser, uint64 expires) public override returns (bool) {
         //@dev - Owner approve a tenant for the TenantSpaceNFT (ERC4907-based NFT)
         tenantSpaceNFT.setApprovalForAll(tenant, true);
 
