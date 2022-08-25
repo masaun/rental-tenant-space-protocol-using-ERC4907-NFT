@@ -4,7 +4,7 @@ import { network, deployments, ethers, run } from "hardhat"
 import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address"
 import { developmentChains } from "../../helper-hardhat-config"
-import { ShoppingMall, TenantSpaceNFT, TenantSpaceNFTFactory, LinkToken, MockOracle, VRFCoordinatorV2Mock } from "../../typechain"
+import { ShoppingMall, TenantSpaceNFT, TenantSpaceNFTFactory, LinkToken, MockOracle, VRFCoordinatorV2Mock, PriceConsumerV3 } from "../../typechain"
 
 //@dev - Helper of ethers.js for retrieving eventLogs emitted, etc.
 import { getEventLog } from "../ethersjs-helper/ethersjsHelper"
@@ -41,12 +41,14 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           let linkToken: LinkToken
           let mockOracle: MockOracle
           let vrfCoordinatorV2Mock: VRFCoordinatorV2Mock
+          let priceConsumerV3: PriceConsumerV3
 
           //@dev - Variables for assigning deployed-addresses
           let SHOPPING_MALL: string
           let TENANT_SPACE_NFT: string
           let TENANT_SPACE_NFT_FACTORY: string
           let VRF_COORDINATOR_V2_MOCK: string
+          let PRICE_CONSUMER_V3: string
 
 
           before(async () => {
@@ -72,10 +74,15 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
 
               linkToken = await ethers.getContract("LinkToken")
               const linkTokenAddress: string = linkToken.address
+              console.log(`\n##### Deployed-contract address of LINK Token: ${ linkTokenAddress } ######`)
 
               vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
               VRF_COORDINATOR_V2_MOCK = vrfCoordinatorV2Mock.address
               console.log(`\n##### Deployed-contract address of the VRFCoordinatorV2Mock.sol: ${ VRF_COORDINATOR_V2_MOCK } ######`)
+
+              priceConsumerV3 = await ethers.getContract("PriceConsumerV3")
+              PRICE_CONSUMER_V3 = priceConsumerV3.address
+              console.log(`\n##### Deployed-contract address of the PriceConsumerV3.sol: ${ PRICE_CONSUMER_V3 } ######`)
           })
 
           it(`createTenantSpaceNFT() - Should be successful to create a new TenantSpaceNFT`, async () => {
@@ -124,7 +131,7 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               let price: BigNumber = await tenantSpaceNFT.getPrice(tenantSpaceId)
               console.log(`price of TenantSpaceNFT of tenantSpaceId=0: ${ fromWei(price) } USD`)
           })
-          
+
 
           ///------------------------
           /// ERC4907 related method
@@ -177,6 +184,10 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
 
           it(`rentTenantSpaceNFT() - A tenant user should rent a tenant space (NFT) from its tenant owner in the Shopping Mall contract (ShoppingMall.sol)`, async () => {
               const tenantSpaceId = 0
+
+              //@dev - Retrieve ETH/USD price via Chainlink's price feed
+              let priceInETHPerUSD = priceConsumerV3.getLatestPrice()
+              console.log(`Price in ETH per USD (via Chainlink PriceFeed): ${ priceInETHPerUSD }`)
 
               //@dev - Calculate expiration period
               const expires = Math.floor(new Date().getTime()/1000) + 1000
