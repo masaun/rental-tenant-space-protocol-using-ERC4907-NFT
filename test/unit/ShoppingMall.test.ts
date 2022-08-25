@@ -156,7 +156,9 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           ///-----------------------------------------
           it(`storeTenantSpaceNFT() - A tenant owner should store a tenant space NFT for rent onto the Shopping Mall contract (ShoppingMall.sol)`, async () => {
               //[TODO]: 
-              let tx: ContractTransaction = await shoppingMall.connect(tenantOwner1).storeTenantSpaceNFT()
+              const tenantSpaceId = 0
+              let tx1: ContractTransaction = await tenantSpaceNFT.connect(tenantOwner1).approve(SHOPPING_MALL, tenantSpaceId)
+              let tx2: ContractTransaction = await shoppingMall.connect(tenantOwner1).storeTenantSpaceNFT(TENANT_SPACE_NFT, tenantSpaceId)
           })
 
           it(`rentTenantSpaceNFT() - A tenant user should rent a tenant space (NFT) from its tenant owner in the Shopping Mall contract (ShoppingMall.sol)`, async () => {
