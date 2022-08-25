@@ -162,8 +162,12 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           })
 
           it(`rentTenantSpaceNFT() - A tenant user should rent a tenant space (NFT) from its tenant owner in the Shopping Mall contract (ShoppingMall.sol)`, async () => {
-              //[TODO]: 
-              let tx: ContractTransaction = await shoppingMall.connect(tenantUser1).rentTenantSpaceNFT()
+              const tenantSpaceId = 0
+
+              //@dev - Calculate expiration period
+              let expires = Math.floor(new Date().getTime()/1000) + 1000
+
+              let tx: ContractTransaction = await shoppingMall.connect(tenantUser1).rentTenantSpaceNFT(TENANT_SPACE_NFT, tenantSpaceId, TENANT_USER_1, expires)
           })
 
       })
