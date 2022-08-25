@@ -4,7 +4,7 @@ import { network, deployments, ethers, run } from "hardhat"
 import { BigNumber, ContractReceipt, ContractTransaction } from "ethers"
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/dist/src/signer-with-address"
 import { developmentChains } from "../../helper-hardhat-config"
-import { TenantSpaceNFT, TenantSpaceNFTFactory, LinkToken, MockOracle, VRFCoordinatorV2Mock } from "../../typechain"
+import { TenantSpaceNFT, TenantSpaceNFTFactory, LinkToken, MockOracle, VRFCoordinatorV2Mock, RandomNumberGeneratorV2 } from "../../typechain"
 
 //@dev - Helper of ethers.js for retrieving eventLogs emitted, etc.
 import { getEventLog } from "../ethersjs-helper/ethersjsHelper"
@@ -40,11 +40,13 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
           let linkToken: LinkToken
           let mockOracle: MockOracle
           let vrfCoordinatorV2Mock: VRFCoordinatorV2Mock
+          let randomNumberGeneratorV2: RandomNumberGeneratorV2
 
           //@dev - Variables for assigning deployed-addresses
           let TENANT_SPACE_NFT: string
           let TENANT_SPACE_NFT_FACTORY: string
           let VRF_COORDINATOR_V2_MOCK: string
+          let RANDOM_NUMBER_GENERATOR_V2: string
 
 
           before(async () => {
@@ -70,6 +72,11 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
               VRF_COORDINATOR_V2_MOCK = vrfCoordinatorV2Mock.address
               console.log(`\n##### Deployed-contract address of the VRFCoordinatorV2Mock.sol: ${ VRF_COORDINATOR_V2_MOCK } ######`)
+
+              randomNumberGeneratorV2 = await ethers.getContract("RandomNumberConsumerV2")
+              RANDOM_NUMBER_GENERATOR_V2 = randomNumberGeneratorV2.address
+              console.log(`\n##### Deployed-contract address of the RandomNumberConsumerV2.sol: ${ RANDOM_NUMBER_GENERATOR_V2 } ######`)
+
           })
 
           it(`createTenantSpaceNFT() - Should be successful to create a new TenantSpaceNFT`, async () => {
