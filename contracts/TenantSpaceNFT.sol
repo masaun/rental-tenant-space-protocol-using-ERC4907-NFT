@@ -52,13 +52,13 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     /**
      * @notice - Set the user and expires of this TenantSpaceNFT
      */
-    function setUserWithRandomNumber(uint256 tenantSpaceId, address tenantSpaceUser, uint64 expires) public {
+    function setUserWithRandomNumber(uint256 tenantSpaceId, address tenantUser, uint64 expires) public {
         //@dev - [TODO]: Retrieve a random number via Chainlink-VRF
         uint256[] memory randomNumbers = _getRandomNumbers();
         uint256 randomNumber = randomNumbers[0];
 
         //@dev - [NOTE]: A caller of setUser() method become this contract
-        setUser(tenantSpaceId, tenantSpaceUser, expires);
+        setUser(tenantSpaceId, tenantUser, expires);
     }
 
     /**

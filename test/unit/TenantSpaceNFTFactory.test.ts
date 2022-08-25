@@ -43,12 +43,12 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
 
           before(async () => {
               //@dev - Get signers and wallet addresses for this tests 
-              [deployer, tenantOwner1, tenantOwner2, tenantUser1, tenant2, ...addrs] = await ethers.getSigners()
+              [deployer, tenantOwner1, tenantOwner2, tenantUser1, tenantUser2, ...addrs] = await ethers.getSigners()
               DEPLOYER = deployer.address
               TENANT_OWNER_1 = tenantOwner1.address
               TENANT_OWNER_2 = tenantOwner2.address
               TENANT_USER_1 = tenantUser1.address
-              TENANT_USER_2 = tenant2.address
+              TENANT_USER_2 = tenantUser2.address
               console.log(`\n deployer: ${ DEPLOYER }`)
 
               //@dev - Using "hardhat-deploy" module

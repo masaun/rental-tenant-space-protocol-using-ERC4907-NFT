@@ -314,7 +314,7 @@ export interface TenantSpaceNFT extends BaseContract {
 
     setUserWithRandomNumber(
       tenantSpaceId: BigNumberish,
-      tenantSpaceUser: string,
+      tenantUser: string,
       expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
@@ -431,7 +431,7 @@ export interface TenantSpaceNFT extends BaseContract {
 
   setUserWithRandomNumber(
     tenantSpaceId: BigNumberish,
-    tenantSpaceUser: string,
+    tenantUser: string,
     expires: BigNumberish,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
@@ -542,7 +542,7 @@ export interface TenantSpaceNFT extends BaseContract {
 
     setUserWithRandomNumber(
       tenantSpaceId: BigNumberish,
-      tenantSpaceUser: string,
+      tenantUser: string,
       expires: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -706,7 +706,7 @@ export interface TenantSpaceNFT extends BaseContract {
 
     setUserWithRandomNumber(
       tenantSpaceId: BigNumberish,
-      tenantSpaceUser: string,
+      tenantUser: string,
       expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
@@ -827,7 +827,7 @@ export interface TenantSpaceNFT extends BaseContract {
 
     setUserWithRandomNumber(
       tenantSpaceId: BigNumberish,
-      tenantSpaceUser: string,
+      tenantUser: string,
       expires: BigNumberish,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
