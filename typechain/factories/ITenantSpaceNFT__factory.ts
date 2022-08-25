@@ -169,11 +169,6 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "_tenantOwner",
-        type: "address",
-      },
-      {
         internalType: "uint256",
         name: "_tenantSpaceId",
         type: "uint256",

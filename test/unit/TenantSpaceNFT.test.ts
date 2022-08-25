@@ -106,6 +106,20 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               console.log(`Owner of TenantSpaceNFT of tenantSpaceId=0: ${ ownerOfTenantSpaceNFT }`)
           })
 
+          it(`setPrice() - Should be successful that a tenant owner set price of TenantSpaceNFT at 100 USD`, async () => {
+              const tenantSpaceId = 0
+              const price: BigNumber = toWei(100) // 100 USD
+              let tx: ContractTransaction = await tenantSpaceNFT.connect(tenantOwner1).setPrice(tenantSpaceId, price)
+              let txReceipt: ContractReceipt = await tx.wait()
+          })
+
+          it(`getPrice() - the price of TenantSpaceNFT should be at 100 USD`, async () => {
+              const tenantSpaceId = 0
+              let price: BigNumber = await tenantSpaceNFT.getPrice(tenantSpaceId)
+              console.log(`price of TenantSpaceNFT of tenantSpaceId=0: ${ fromWei(price) } USD`)
+          })
+
+
           ///------------------------
           /// ERC4907 related method
           ///------------------------

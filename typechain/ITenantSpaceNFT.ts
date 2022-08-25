@@ -23,7 +23,7 @@ export interface ITenantSpaceNFTInterface extends utils.Interface {
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
-    "getPrice(address,uint256)": FunctionFragment;
+    "getPrice(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "mint(address)": FunctionFragment;
     "ownerOf(uint256)": FunctionFragment;
@@ -48,7 +48,7 @@ export interface ITenantSpaceNFTInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "getPrice",
-    values: [string, BigNumberish]
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "isApprovedForAll",
@@ -215,7 +215,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<[string] & { operator: string }>;
 
     getPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { _price: BigNumber }>;
@@ -304,7 +303,6 @@ export interface ITenantSpaceNFT extends BaseContract {
   ): Promise<string>;
 
   getPrice(
-    _tenantOwner: string,
     _tenantSpaceId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -390,7 +388,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<string>;
 
     getPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -520,7 +517,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     getPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -616,7 +612,6 @@ export interface ITenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

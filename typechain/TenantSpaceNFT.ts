@@ -23,7 +23,7 @@ export interface TenantSpaceNFTInterface extends utils.Interface {
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
-    "getPrice(address,uint256)": FunctionFragment;
+    "getPrice(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "mint(address)": FunctionFragment;
     "name()": FunctionFragment;
@@ -52,7 +52,7 @@ export interface TenantSpaceNFTInterface extends utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "getPrice",
-    values: [string, BigNumberish]
+    values: [BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "isApprovedForAll",
@@ -233,7 +233,6 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<[string]>;
 
     getPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { _price: BigNumber }>;
@@ -343,7 +342,6 @@ export interface TenantSpaceNFT extends BaseContract {
   ): Promise<string>;
 
   getPrice(
-    _tenantOwner: string,
     _tenantSpaceId: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
@@ -447,7 +445,6 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<string>;
 
     getPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -595,7 +592,6 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<BigNumber>;
 
     getPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -706,7 +702,6 @@ export interface TenantSpaceNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getPrice(
-      _tenantOwner: string,
       _tenantSpaceId: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

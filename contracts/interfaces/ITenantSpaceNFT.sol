@@ -13,6 +13,6 @@ interface ITenantSpaceNFT is IERC721, IERC4907 {
 
     function setPrice(uint256 _tenantSpaceId, uint256 _price) external;
 
-    function getPrice(address _tenantOwner, uint256 _tenantSpaceId) external view returns (uint256 _price);
+    function getPrice(uint256 _tenantSpaceId) external view returns (uint256 _price);
 
 }
