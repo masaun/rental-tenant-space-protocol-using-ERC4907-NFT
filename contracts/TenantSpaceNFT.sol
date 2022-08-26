@@ -35,7 +35,7 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: TenantSpaceNFT contract address -> tenantSpaceId -> the TenantSpaceData struct
     mapping (uint => mapping(address => mapping (uint64 => uint256))) public tenantSpaceNFTAssociatedRandomNumbers;   // [Key]: tenantSpaceId -> tenantUser -> expires
 
-    constructor(string memory name_, string memory symbol_, IRandomNumberGeneratorV2 _rngV2, VRFCoordinatorV2Mock _vrfCoordinatorV2) ERC4907(name_,symbol_) {
+    constructor(string memory name_, string memory symbol_, IRandomNumberGeneratorV2 _rngV2, VRFCoordinatorV2Mock _vrfCoordinatorV2) ERC4907(name_, symbol_) {
         rngV2 = _rngV2;
         vrfCoordinatorV2 = _vrfCoordinatorV2;
     }

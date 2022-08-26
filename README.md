@@ -22,6 +22,13 @@ yarn test-unit:TenantSpaceNFTFactory
 
 <br>
 
+- Unit test of the RandomNumberGeneratorV2.sol
+```
+yarn test-unit:RandomNumberGeneratorV2
+```
+
+<br>
+
 
 - Scenario test
 ```

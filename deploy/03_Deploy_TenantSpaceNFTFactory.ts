@@ -19,13 +19,13 @@ const deployFunction: DeployFunction = async () => {
 
     // If we are on a local development network, we need to deploy the TenantSpaceNFTFactory contract!
     if (chainId === 31337) {
-      randomNumberGeneratorV2 = await ethers.getContract("RandomNumberConsumerV2")
-      RANDOM_NUMBER_GENERATOR_V2 = randomNumberGeneratorV2.address
-      //console.log(`\n##### Deployed-contract address of the RandomNumberConsumerV2.sol: ${ RANDOM_NUMBER_GENERATOR_V2 } ######`)
-
       vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
       VRF_COORDINATOR_V2_MOCK = vrfCoordinatorV2Mock.address
-      //console.log(`\n##### Deployed-contract address of the VRFCoordinatorV2Mock.sol: ${ VRF_COORDINATOR_V2_MOCK } ######`)
+      console.log(`\n##### Deployed-contract address of the VRFCoordinatorV2Mock.sol: ${ VRF_COORDINATOR_V2_MOCK } ######`)
+
+      randomNumberGeneratorV2 = await ethers.getContract("RandomNumberGeneratorV2")
+      RANDOM_NUMBER_GENERATOR_V2 = randomNumberGeneratorV2.address
+      console.log(`\n##### Deployed-contract address of the RandomNumberGeneratorV2.sol: ${ RANDOM_NUMBER_GENERATOR_V2 } ######`)
 
       log(`Local network detected! Deploying the TenantSpaceNFTFactory contract ...`)
 
