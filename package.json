@@ -7,6 +7,7 @@
     "test-unit:ShoppingMall": "hardhat test ./test/unit/ShoppingMall.test.ts",
     "test-unit:TenantSpaceNFT": "hardhat test ./test/unit/TenantSpaceNFT.test.ts",
     "test-unit:TenantSpaceNFTFactory": "hardhat test ./test/unit/TenantSpaceNFTFactory.test.ts",
+    "test-unit:RandomNumberGeneratorV2": "hardhat test ./test/unit/RandomNumberGeneratorV2.test.ts",
     "test-scenario": "hardhat test ./test/scenario/Scenario.test.ts --network hardhat",
     "test-unit:ERC4907Demo": "hardhat test ./test/ERC4907/ERC4907Demo.test.ts",
     "test-unit:chainlink-examples": "hardhat test ./test/chainlink-examples/unit/*.spec.ts --network hardhat",

@@ -80,9 +80,9 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               VRF_COORDINATOR_V2_MOCK = vrfCoordinatorV2Mock.address
               console.log(`\n##### Deployed-contract address of the VRFCoordinatorV2Mock.sol: ${ VRF_COORDINATOR_V2_MOCK } ######`)
 
-              // priceConsumerV3 = await ethers.getContract("PriceConsumerV3")
-              // PRICE_CONSUMER_V3 = priceConsumerV3.address
-              // console.log(`\n##### Deployed-contract address of the PriceConsumerV3.sol: ${ PRICE_CONSUMER_V3 } ######`)
+              priceConsumerV3 = await ethers.getContract("PriceConsumerV3")
+              PRICE_CONSUMER_V3 = priceConsumerV3.address
+              console.log(`\n##### Deployed-contract address of the PriceConsumerV3.sol: ${ PRICE_CONSUMER_V3 } ######`)
           })
 
           it(`createTenantSpaceNFT() - Should be successful to create a new TenantSpaceNFT`, async () => {
