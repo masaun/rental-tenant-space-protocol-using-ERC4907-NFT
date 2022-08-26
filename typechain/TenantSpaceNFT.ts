@@ -37,6 +37,7 @@ export interface TenantSpaceNFTInterface extends utils.Interface {
     "supportsInterface(bytes4)": FunctionFragment;
     "symbol()": FunctionFragment;
     "tenantSpaceDatas(address,uint256)": FunctionFragment;
+    "tenantSpaceNFTAssociatedRandomNumbers(uint256,address,uint64)": FunctionFragment;
     "tokenURI(uint256)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
     "userExpires(uint256)": FunctionFragment;
@@ -98,6 +99,10 @@ export interface TenantSpaceNFTInterface extends utils.Interface {
     values: [string, BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "tenantSpaceNFTAssociatedRandomNumbers",
+    values: [BigNumberish, string, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "tokenURI",
     values: [BigNumberish]
   ): string;
@@ -154,6 +159,10 @@ export interface TenantSpaceNFTInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "symbol", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "tenantSpaceDatas",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "tenantSpaceNFTAssociatedRandomNumbers",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "tokenURI", data: BytesLike): Result;
@@ -338,6 +347,13 @@ export interface TenantSpaceNFT extends BaseContract {
       }
     >;
 
+    tenantSpaceNFTAssociatedRandomNumbers(
+      arg0: BigNumberish,
+      arg1: string,
+      arg2: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
+
     tokenURI(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -455,6 +471,13 @@ export interface TenantSpaceNFT extends BaseContract {
     }
   >;
 
+  tenantSpaceNFTAssociatedRandomNumbers(
+    arg0: BigNumberish,
+    arg1: string,
+    arg2: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
   transferFrom(
@@ -565,6 +588,13 @@ export interface TenantSpaceNFT extends BaseContract {
         price: BigNumber;
       }
     >;
+
+    tenantSpaceNFTAssociatedRandomNumbers(
+      arg0: BigNumberish,
+      arg1: string,
+      arg2: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     tokenURI(tokenId: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -724,6 +754,13 @@ export interface TenantSpaceNFT extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    tenantSpaceNFTAssociatedRandomNumbers(
+      arg0: BigNumberish,
+      arg1: string,
+      arg2: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     tokenURI(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -842,6 +879,13 @@ export interface TenantSpaceNFT extends BaseContract {
     tenantSpaceDatas(
       arg0: string,
       arg1: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    tenantSpaceNFTAssociatedRandomNumbers(
+      arg0: BigNumberish,
+      arg1: string,
+      arg2: BigNumberish,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
