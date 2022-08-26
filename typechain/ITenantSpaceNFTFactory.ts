@@ -41,7 +41,7 @@ export interface ITenantSpaceNFTFactoryInterface extends utils.Interface {
 
 export type TenantSpaceNFTCreatedEvent = TypedEvent<
   [string, string],
-  { owner: string; tenantSpaceNFT: string }
+  { tenantOwner: string; tenantSpaceNFT: string }
 >;
 
 export type TenantSpaceNFTCreatedEventFilter =
@@ -98,11 +98,11 @@ export interface ITenantSpaceNFTFactory extends BaseContract {
 
   filters: {
     "TenantSpaceNFTCreated(address,address)"(
-      owner?: null,
+      tenantOwner?: null,
       tenantSpaceNFT?: null
     ): TenantSpaceNFTCreatedEventFilter;
     TenantSpaceNFTCreated(
-      owner?: null,
+      tenantOwner?: null,
       tenantSpaceNFT?: null
     ): TenantSpaceNFTCreatedEventFilter;
   };

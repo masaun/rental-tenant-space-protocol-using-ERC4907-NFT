@@ -1,7 +1,8 @@
 import { DeployFunction } from "hardhat-deploy/types"
 import { getNamedAccounts, deployments, network, ethers } from "hardhat"
 
-import { TenantSpaceNFTFactory, ShoppingMall } from "../typechain"
+import { ShoppingMall } from "../typechain"
+//import { TenantSpaceNFTFactory, ShoppingMall } from "../typechain"
 
 
 const deployFunction: DeployFunction = async () => {
@@ -13,12 +14,13 @@ const deployFunction: DeployFunction = async () => {
     if (chainId === 31337) {
       log(`Local network detected! Deploying the ShoppingMall contract ...`)
 
-      let tenantSpaceNFTFactory: TenantSpaceNFTFactory = await ethers.getContract("TenantSpaceNFTFactory")
+      //let tenantSpaceNFTFactory: TenantSpaceNFTFactory = await ethers.getContract("TenantSpaceNFTFactory")
 
       await deploy(`ShoppingMall`, {
         from: deployer,
         log: true,
-        args: [tenantSpaceNFTFactory.address],
+        args: [],
+        //args: [tenantSpaceNFTFactory.address],
       })
 
       log(`ShoppingMall contract has been deployed!`)

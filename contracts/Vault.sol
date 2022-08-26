@@ -27,10 +27,10 @@ contract Vault {
      * @notice - Deposit underlyingToken and a ERC4907-based NFT
      * @param _amount - underlyingToken amount to be deposited
      */ 
-    function deposit(uint _amount, uint _tokenId) external {
+    function deposit(uint _amount, uint _tenantSpaceId) external {
         //@dev - Deposit a ERC4907-based NFT
-        //uint256 _tokenId = 0;
-        tenantSpaceNFT.transferFrom(msg.sender, address(this), _tokenId);
+        //uint256 _tenantSpaceId = 0;
+        tenantSpaceNFT.transferFrom(msg.sender, address(this), _tenantSpaceId);
 
         //@dev - Stake underlying tokens into the Staking contract
         staking.stake(_amount);

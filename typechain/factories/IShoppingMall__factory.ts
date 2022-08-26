@@ -10,30 +10,56 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "string",
-        name: "name_",
-        type: "string",
+        internalType: "contract ITenantSpaceNFT",
+        name: "tenantSpaceNFT",
+        type: "address",
       },
-      {
-        internalType: "string",
-        name: "symbol_",
-        type: "string",
-      },
-    ],
-    name: "createTenantSpaceNFT",
-    outputs: [
       {
         internalType: "uint256",
-        name: "",
+        name: "tenantSpaceId",
         type: "uint256",
       },
+      {
+        internalType: "address payable",
+        name: "tenantOwner",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "tenantUser",
+        type: "address",
+      },
+      {
+        internalType: "uint64",
+        name: "expires",
+        type: "uint64",
+      },
     ],
-    stateMutability: "nonpayable",
+    name: "rentTenantSpaceNFT",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "payable",
     type: "function",
   },
   {
-    inputs: [],
-    name: "rentTenantSpace",
+    inputs: [
+      {
+        internalType: "contract ITenantSpaceNFT",
+        name: "tenantSpaceNFT",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "tenantSpaceId",
+        type: "uint256",
+      },
+    ],
+    name: "storeTenantSpaceNFT",
     outputs: [
       {
         internalType: "uint256",

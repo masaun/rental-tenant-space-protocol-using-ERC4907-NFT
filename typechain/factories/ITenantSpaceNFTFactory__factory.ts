@@ -16,7 +16,7 @@ const _abi = [
       {
         indexed: false,
         internalType: "address",
-        name: "owner",
+        name: "tenantOwner",
         type: "address",
       },
       {

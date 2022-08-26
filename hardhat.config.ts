@@ -38,9 +38,11 @@ const config: HardhatUserConfig = {
     hardhat: {
       // If you want to do some forking set `enabled` to true
       forking: {
-        url: MAINNET_RPC_URL,
+        //url: MAINNET_RPC_URL,
+        url: RINKEBY_RPC_URL,
         blockNumber: Number(FORKING_BLOCK_NUMBER),
-        enabled: false,
+        enabled: true,   // [NOTE]: Forking test
+        //enabled: false,    // [NOTE]: Not Forking test
       },
       chainId: 31337,
     },

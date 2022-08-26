@@ -20,15 +20,27 @@ export interface TenantSpaceNFTFactoryInterface extends utils.Interface {
   contractName: "TenantSpaceNFTFactory";
   functions: {
     "createTenantSpaceNFT(string,string)": FunctionFragment;
+    "rngV2()": FunctionFragment;
+    "vrfCoordinatorV2()": FunctionFragment;
   };
 
   encodeFunctionData(
     functionFragment: "createTenantSpaceNFT",
     values: [string, string]
   ): string;
+  encodeFunctionData(functionFragment: "rngV2", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "vrfCoordinatorV2",
+    values?: undefined
+  ): string;
 
   decodeFunctionResult(
     functionFragment: "createTenantSpaceNFT",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "rngV2", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "vrfCoordinatorV2",
     data: BytesLike
   ): Result;
 
@@ -41,7 +53,7 @@ export interface TenantSpaceNFTFactoryInterface extends utils.Interface {
 
 export type TenantSpaceNFTCreatedEvent = TypedEvent<
   [string, string],
-  { owner: string; tenantSpaceNFT: string }
+  { tenantOwner: string; tenantSpaceNFT: string }
 >;
 
 export type TenantSpaceNFTCreatedEventFilter =
@@ -80,6 +92,10 @@ export interface TenantSpaceNFTFactory extends BaseContract {
       symbol: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
+
+    rngV2(overrides?: CallOverrides): Promise<[string]>;
+
+    vrfCoordinatorV2(overrides?: CallOverrides): Promise<[string]>;
   };
 
   createTenantSpaceNFT(
@@ -88,21 +104,29 @@ export interface TenantSpaceNFTFactory extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  rngV2(overrides?: CallOverrides): Promise<string>;
+
+  vrfCoordinatorV2(overrides?: CallOverrides): Promise<string>;
+
   callStatic: {
     createTenantSpaceNFT(
       name: string,
       symbol: string,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    rngV2(overrides?: CallOverrides): Promise<string>;
+
+    vrfCoordinatorV2(overrides?: CallOverrides): Promise<string>;
   };
 
   filters: {
     "TenantSpaceNFTCreated(address,address)"(
-      owner?: null,
+      tenantOwner?: null,
       tenantSpaceNFT?: null
     ): TenantSpaceNFTCreatedEventFilter;
     TenantSpaceNFTCreated(
-      owner?: null,
+      tenantOwner?: null,
       tenantSpaceNFT?: null
     ): TenantSpaceNFTCreatedEventFilter;
   };
@@ -113,6 +137,10 @@ export interface TenantSpaceNFTFactory extends BaseContract {
       symbol: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
+
+    rngV2(overrides?: CallOverrides): Promise<BigNumber>;
+
+    vrfCoordinatorV2(overrides?: CallOverrides): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -121,5 +149,9 @@ export interface TenantSpaceNFTFactory extends BaseContract {
       symbol: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
+
+    rngV2(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    vrfCoordinatorV2(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }
