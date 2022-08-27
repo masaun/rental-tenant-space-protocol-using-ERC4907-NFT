@@ -20,6 +20,7 @@ import { MockV3Aggregator, PriceConsumerV3 } from "../../typechain"
       describe("constructor", () => {
         it("sets the aggregator addresses correctly", async () => {
           const response: string = await priceConsumerV3.getPriceFeed()
+          console.log(`Response of priceConsumerV3.getPriceFeed(): ${ response }`)
           assert.equal(response, mockV3Aggregator.address)
         })
       })
@@ -28,6 +29,8 @@ import { MockV3Aggregator, PriceConsumerV3 } from "../../typechain"
         it("should return the same value as the mock", async () => {
           const priceConsumerResult: BigNumber = await priceConsumerV3.getLatestPrice()
           const priceFeedResult: BigNumber = (await mockV3Aggregator.latestRoundData()).answer
+          console.log(`Response of priceConsumerV3.getLatestPrice() and priceConsumerV3.latestRoundData(): ${ priceConsumerResult }`)
+          console.log(`Response of priceConsumerV3.priceFeedResult() and mockV3Aggregator.latestRoundData(): ${ priceFeedResult }`)
           assert.equal(priceConsumerResult.toString(), priceFeedResult.toString())
         })
       })
