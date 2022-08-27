@@ -22,9 +22,9 @@ yarn test-unit:TenantSpaceNFTFactory
 
 <br>
 
-- Unit test of the RandomNumberGeneratorV2.sol
+- Unit test of the PriceConsumerV3.sol
 ```
-yarn test-unit:RandomNumberGeneratorV2
+yarn test-unit:PriceConsumerV3
 ```
 
 <br>
