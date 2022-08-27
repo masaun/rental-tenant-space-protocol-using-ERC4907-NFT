@@ -29,15 +29,16 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     using Counters for Counters.Counter;
     Counters.Counter private _tenantSpaceIds;
 
-    IRandomNumberGeneratorV2 public rngV2;
-    VRFCoordinatorV2Mock public vrfCoordinatorV2;
+    // IRandomNumberGeneratorV2 public rngV2;
+    // VRFCoordinatorV2Mock public vrfCoordinatorV2;
 
     mapping (address => mapping (uint256 => DataTypes.TenantSpaceData)) public tenantSpaceDatas;  // [Key]: TenantSpaceNFT contract address -> tenantSpaceId -> the TenantSpaceData struct
     mapping (uint => mapping(address => mapping (uint64 => uint256))) public tenantSpaceNFTAssociatedRandomNumbers;   // [Key]: tenantSpaceId -> tenantUser -> expires
 
-    constructor(string memory name_, string memory symbol_, IRandomNumberGeneratorV2 _rngV2, VRFCoordinatorV2Mock _vrfCoordinatorV2) ERC4907(name_, symbol_) {
-        rngV2 = _rngV2;
-        vrfCoordinatorV2 = _vrfCoordinatorV2;
+    constructor(string memory name_, string memory symbol_) ERC4907(name_, symbol_) {
+    //constructor(string memory name_, string memory symbol_, IRandomNumberGeneratorV2 _rngV2, VRFCoordinatorV2Mock _vrfCoordinatorV2) ERC4907(name_, symbol_) {
+        // rngV2 = _rngV2;
+        // vrfCoordinatorV2 = _vrfCoordinatorV2;
     }
 
     /**
@@ -53,39 +54,39 @@ contract TenantSpaceNFT is ERC4907, ITenantSpaceNFT {
     /**
      * @notice - Set the user and expires of this TenantSpaceNFT
      */
-    function setUserWithRandomNumber(uint256 tenantSpaceId, address tenantUser, uint64 expires) public {
-        //@dev - [TODO]: Retrieve a random number via Chainlink-VRF
-        uint256[] memory randomNumbers = _getRandomNumbers();
-        uint256 randomNumber = randomNumbers[0];
+    // function setUserWithRandomNumber(uint256 tenantSpaceId, address tenantUser, uint64 expires) public {
+    //     //@dev - [TODO]: Retrieve a random number via Chainlink-VRF
+    //     uint256[] memory randomNumbers = _getRandomNumbers();
+    //     uint256 randomNumber = randomNumbers[0];
 
-        //@dev - [TODO / TO BE CONSIDERED]: Store a random number into mapping
-        tenantSpaceNFTAssociatedRandomNumbers[tenantSpaceId][tenantUser][expires] = randomNumber;
+    //     //@dev - [TODO / TO BE CONSIDERED]: Store a random number into mapping
+    //     tenantSpaceNFTAssociatedRandomNumbers[tenantSpaceId][tenantUser][expires] = randomNumber;
 
-        //@dev - [NOTE]: A caller of setUser() method become this contract
-        setUser(tenantSpaceId, tenantUser, expires);
-    }
+    //     //@dev - [NOTE]: A caller of setUser() method become this contract
+    //     setUser(tenantSpaceId, tenantUser, expires);
+    // }
 
     /**
      * @notice - Get random numbers via Chainlink-VRF
      */
-    function _getRandomNumbers() internal returns (uint256[] memory _randomNumbers) {
-        //@dev - Generate Random Number via Chainlink VRF
-        rngV2.requestRandomWords();
+    // function _getRandomNumbers() internal returns (uint256[] memory _randomNumbers) {
+    //     //@dev - Generate Random Number via Chainlink VRF
+    //     rngV2.requestRandomWords();
 
-        //@dev - Get requestId
-        uint256 requestId = rngV2.getSRequestId();
-        console.log("-------------- requestId: %d --------------", requestId);
+    //     //@dev - Get requestId
+    //     uint256 requestId = rngV2.getSRequestId();
+    //     console.log("-------------- requestId: %d --------------", requestId);
 
-        //@dev - Execute fulfillRandomWords() method to get callback
-        vrfCoordinatorV2.fulfillRandomWords(requestId, address(rngV2));
+    //     //@dev - Execute fulfillRandomWords() method to get callback
+    //     vrfCoordinatorV2.fulfillRandomWords(requestId, address(rngV2));
 
-        //@dev - Get value of RNs (random nubmers) that is stored in s_randomWords by above
-        uint256 randomNumber = rngV2.getSRandomWord();
-        console.log("-------------- randomNumber: %s --------------", randomNumber);
-        uint256[] memory randomNumbers = rngV2.getSRandomWords();
+    //     //@dev - Get value of RNs (random nubmers) that is stored in s_randomWords by above
+    //     uint256 randomNumber = rngV2.getSRandomWord();
+    //     console.log("-------------- randomNumber: %s --------------", randomNumber);
+    //     uint256[] memory randomNumbers = rngV2.getSRandomWords();
 
-        return randomNumbers;
-    }
+    //     return randomNumbers;
+    // }
 
 
     /**

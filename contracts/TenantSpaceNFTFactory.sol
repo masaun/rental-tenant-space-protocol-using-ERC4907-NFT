@@ -7,8 +7,8 @@ import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
 import { ITenantSpaceNFTFactory } from "./interfaces/ITenantSpaceNFTFactory.sol";
 
 //@dev - RNG (Random Number Generated) via Chainlink VRF
-import { IRandomNumberGeneratorV2 } from "./interfaces/IRandomNumberGeneratorV2.sol";
-import { VRFCoordinatorV2Mock } from "./chainlink-examples/test/VRFCoordinatorV2Mock.sol";
+// import { IRandomNumberGeneratorV2 } from "./interfaces/IRandomNumberGeneratorV2.sol";
+// import { VRFCoordinatorV2Mock } from "./chainlink-examples/test/VRFCoordinatorV2Mock.sol";
 
 //@dev - Struct, Enum, etc
 import { DataTypes } from "./libraries/DataTypes.sol";
@@ -23,12 +23,13 @@ contract TenantSpaceNFTFactory is ITenantSpaceNFTFactory {
 
     address[] private tenantSpaceNFTs;
 
-    IRandomNumberGeneratorV2 public rngV2;
-    VRFCoordinatorV2Mock public vrfCoordinatorV2;
+    //IRandomNumberGeneratorV2 public rngV2;
+    //VRFCoordinatorV2Mock public vrfCoordinatorV2;
 
-    constructor(IRandomNumberGeneratorV2 _rngV2, VRFCoordinatorV2Mock _vrfCoordinatorV2) {
-        rngV2 = _rngV2;
-        vrfCoordinatorV2 = _vrfCoordinatorV2;
+    constructor() {
+    //constructor(IRandomNumberGeneratorV2 _rngV2, VRFCoordinatorV2Mock _vrfCoordinatorV2) {
+        //rngV2 = _rngV2;
+        //vrfCoordinatorV2 = _vrfCoordinatorV2;
     }
 
     /**
@@ -36,8 +37,8 @@ contract TenantSpaceNFTFactory is ITenantSpaceNFTFactory {
      * @dev - Only tenant owner of shopping mall can execute this method
      */ 
     function createTenantSpaceNFT(string memory name, string memory symbol) public override {
-        TenantSpaceNFT tenantSpaceNFT = new TenantSpaceNFT(name, symbol, rngV2, vrfCoordinatorV2);
-        //TenantSpaceNFT tenantSpaceNFT = new TenantSpaceNFT(name, symbol);
+        //TenantSpaceNFT tenantSpaceNFT = new TenantSpaceNFT(name, symbol, rngV2, vrfCoordinatorV2);
+        TenantSpaceNFT tenantSpaceNFT = new TenantSpaceNFT(name, symbol);
         tenantSpaceNFTs.push(address(tenantSpaceNFT));
 
         //[TODO]: Transfer ownership of NFT into a tenant owner's wallet address
