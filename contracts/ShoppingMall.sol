@@ -57,7 +57,7 @@ contract ShoppingMall is IShoppingMall {
 
         //@dev - NOTE: Before executin this method, a tenant user must get USD/ETH price (by using Chainlink Price Feed)
         //@dev - A tenant user pay a tenant fee for rent in ETH
-        //int256 tenantSpaceNFTPriceInEth = priceConsumerV3.getLatestPrice()
+        //int256 tenantSpaceNFTPriceInEth = getPriceFeedETHPerUSD()
         uint feeForRentInEth = msg.value;
         //address payable tenantOwner = tenantSpaceNFT.ownerOf(tenantSpaceId);
         tenantOwner.transfer(feeForRentInEth);

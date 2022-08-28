@@ -21,14 +21,14 @@ import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 export interface ShoppingMallInterface extends utils.Interface {
   contractName: "ShoppingMall";
   functions: {
-    "convertPriceFromUSDToETH()": FunctionFragment;
+    "getPriceFeedETHPerUSD()": FunctionFragment;
     "priceConsumerV3()": FunctionFragment;
     "rentTenantSpaceNFT(address,uint256,address,address,uint64)": FunctionFragment;
     "storeTenantSpaceNFT(address,uint256)": FunctionFragment;
   };
 
   encodeFunctionData(
-    functionFragment: "convertPriceFromUSDToETH",
+    functionFragment: "getPriceFeedETHPerUSD",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -45,7 +45,7 @@ export interface ShoppingMallInterface extends utils.Interface {
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "convertPriceFromUSDToETH",
+    functionFragment: "getPriceFeedETHPerUSD",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -92,7 +92,7 @@ export interface ShoppingMall extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    convertPriceFromUSDToETH(
+    getPriceFeedETHPerUSD(
       overrides?: CallOverrides
     ): Promise<[BigNumber] & { _ethPricePerUsd: BigNumber }>;
 
@@ -114,7 +114,7 @@ export interface ShoppingMall extends BaseContract {
     ): Promise<ContractTransaction>;
   };
 
-  convertPriceFromUSDToETH(overrides?: CallOverrides): Promise<BigNumber>;
+  getPriceFeedETHPerUSD(overrides?: CallOverrides): Promise<BigNumber>;
 
   priceConsumerV3(overrides?: CallOverrides): Promise<string>;
 
@@ -134,7 +134,7 @@ export interface ShoppingMall extends BaseContract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
-    convertPriceFromUSDToETH(overrides?: CallOverrides): Promise<BigNumber>;
+    getPriceFeedETHPerUSD(overrides?: CallOverrides): Promise<BigNumber>;
 
     priceConsumerV3(overrides?: CallOverrides): Promise<string>;
 
@@ -157,7 +157,7 @@ export interface ShoppingMall extends BaseContract {
   filters: {};
 
   estimateGas: {
-    convertPriceFromUSDToETH(overrides?: CallOverrides): Promise<BigNumber>;
+    getPriceFeedETHPerUSD(overrides?: CallOverrides): Promise<BigNumber>;
 
     priceConsumerV3(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -178,7 +178,7 @@ export interface ShoppingMall extends BaseContract {
   };
 
   populateTransaction: {
-    convertPriceFromUSDToETH(
+    getPriceFeedETHPerUSD(
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
