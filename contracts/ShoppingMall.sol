@@ -63,6 +63,13 @@ contract ShoppingMall is IShoppingMall {
         tenantOwner.transfer(feeForRentInEth);
     }
 
+    /**
+     * @notice - Get a price feed of ETH price (per USD) by using Chainlink Price Feed
+     */ 
+    function getPriceFeedETHPerUSD() public view returns (int256 _ethPricePerUsd) {
+        return priceConsumerV3.getLatestPrice();
+    }
+
 
     ///--------------------------
     /// Methods to receive ETH
