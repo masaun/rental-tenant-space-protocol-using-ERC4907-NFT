@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 //@dev - Chainlink modules
-//import { PriceConsumerV3 } from "./chainlink-examples/PriceConsumerV3.sol";
+import { PriceConsumerV3 } from "./chainlink-examples/PriceConsumerV3.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
@@ -19,10 +19,10 @@ import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
  */ 
 contract ShoppingMall is IShoppingMall {
 
-    //PriceConsumerV3 public priceConsumerV3;
+    PriceConsumerV3 public priceConsumerV3;
 
-    constructor() {
-        //priceConsumerV3 = _priceConsumerV3;
+    constructor(PriceConsumerV3 _priceConsumerV3) {
+        priceConsumerV3 = _priceConsumerV3;
     }
 
     /**

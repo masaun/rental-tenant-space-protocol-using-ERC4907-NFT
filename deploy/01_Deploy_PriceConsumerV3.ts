@@ -9,8 +9,8 @@ import { verify } from "../helper-functions"
 
 const deployFunction: DeployFunction = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments
-
   const { deployer } = await getNamedAccounts()
+
   const chainId: number | undefined = network.config.chainId
   if (!chainId) return
 
