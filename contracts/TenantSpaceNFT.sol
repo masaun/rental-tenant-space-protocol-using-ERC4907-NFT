@@ -10,10 +10,6 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 //@dev - Interfaces
 import { ITenantSpaceNFT } from "./interfaces/ITenantSpaceNFT.sol";
 
-//@dev - RNG (Random Number Generated) via Chainlink VRF
-import { IRandomNumberGeneratorV2 } from "./interfaces/IRandomNumberGeneratorV2.sol";
-import { VRFCoordinatorV2Mock } from "./chainlink-examples/test/VRFCoordinatorV2Mock.sol";
-
 //@dev - Struct, Enum, etc
 import { DataTypes } from "./libraries/DataTypes.sol";
 
