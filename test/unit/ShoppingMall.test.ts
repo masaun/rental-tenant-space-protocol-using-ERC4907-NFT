@@ -186,7 +186,7 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               const tenantSpaceId = 0
 
               //@dev - Retrieve ETH/USD price via Chainlink's price feed
-              let priceInETHPerUSD = shoppingMall.getPriceFeedETHPerUSD()
+              let priceInETHPerUSD = await shoppingMall.getPriceFeedETHPerUSD()
               console.log(`Price in ETH per USD (via Chainlink PriceFeed): ${ priceInETHPerUSD }`)
               let feeForRentInEth = priceInETHPerUSD
 

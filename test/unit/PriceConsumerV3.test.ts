@@ -6,7 +6,7 @@ import { MockV3Aggregator, PriceConsumerV3 } from "../../typechain"
 
 !developmentChains.includes(network.name)
   ? describe.skip
-  : describe("PriceConsumer Unit Tests", async function () {
+  : describe("Unit Tests - PriceConsumerV3.sol", async function () {
       // Price Feed Address, values can be obtained at https://docs.chain.link/docs/reference-contracts
       let priceConsumerV3: PriceConsumerV3
       let mockV3Aggregator: MockV3Aggregator
