@@ -1,5 +1,15 @@
 # Rental Tenant Space Protocol using ERC4907-based Rentable NFT
 
+## Overview
+- This is a smart contract protocol that allow owners to rent users who want to use tenant spaces in shopping malls by using ERC4907-based rentable NFT.
+
+<br>
+
+## Demo Video
+- https://youtu.be/S9VmTiBmRb0
+
+<br>
+
 ## Test (Mainnet-forking test)
 - Unit test of the ShoppingMall.sol
 ```
