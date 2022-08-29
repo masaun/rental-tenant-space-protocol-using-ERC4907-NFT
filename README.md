@@ -10,7 +10,7 @@
 
 <br>
 
-## Test (Mainnet-forking test)
+## Test (Rinkeby testnet-forking test)
 - Unit test of the ShoppingMall.sol
 ```
 yarn test-unit:ShoppingMall
