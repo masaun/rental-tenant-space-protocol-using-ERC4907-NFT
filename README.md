@@ -10,6 +10,11 @@
 
 <br>
 
+## Specifications
+- Chainlink Price Feed is used in the ShoppingMall.sol for retrieving ETH/USD price. This price retrieved is used for payment when a tenant space NFT is rent.
+
+<br>
+
 ## Test (Rinkeby testnet-forking test)
 - Unit test of the ShoppingMall.sol
 ```
