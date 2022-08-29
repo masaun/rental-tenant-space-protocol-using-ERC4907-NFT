@@ -186,14 +186,15 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               const tenantSpaceId = 0
 
               //@dev - Retrieve ETH/USD price via Chainlink's price feed
-              //let priceInETHPerUSD = priceConsumerV3.getLatestPrice()
-              //console.log(`Price in ETH per USD (via Chainlink PriceFeed): ${ priceInETHPerUSD }`)
+              let priceInETHPerUSD = shoppingMall.getPriceFeedETHPerUSD()
+              console.log(`Price in ETH per USD (via Chainlink PriceFeed): ${ priceInETHPerUSD }`)
+              let feeForRentInEth = priceInETHPerUSD
 
               //@dev - Calculate expiration period
               const expires = Math.floor(new Date().getTime()/1000) + 1000
               const _tenantOwner: string = await tenantSpaceNFT.ownerOf(tenantSpaceId);
               const _tenantUser: string = await tenantSpaceNFT.userOf(tenantSpaceId);
-              let tx: ContractTransaction = await shoppingMall.connect(tenantUser1).rentTenantSpaceNFT(TENANT_SPACE_NFT, tenantSpaceId, _tenantOwner, _tenantUser, expires)
+              let tx: ContractTransaction = await shoppingMall.connect(tenantUser1).rentTenantSpaceNFT(TENANT_SPACE_NFT, tenantSpaceId, _tenantOwner, _tenantUser, expires, { value: feeForRentInEth })
           })
 
       })

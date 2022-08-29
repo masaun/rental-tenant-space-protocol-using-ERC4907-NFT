@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 //@dev - Chainlink modules
-//import { PriceConsumerV3 } from "./chainlink-examples/PriceConsumerV3.sol";
+import { PriceConsumerV3 } from "./chainlink-examples/PriceConsumerV3.sol";
 
 import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
@@ -19,10 +19,10 @@ import { TenantSpaceNFT } from "./TenantSpaceNFT.sol";
  */ 
 contract ShoppingMall is IShoppingMall {
 
-    //PriceConsumerV3 public priceConsumerV3;
+    PriceConsumerV3 public priceConsumerV3;
 
-    constructor() {
-        //priceConsumerV3 = _priceConsumerV3;
+    constructor(PriceConsumerV3 _priceConsumerV3) {
+        priceConsumerV3 = _priceConsumerV3;
     }
 
     /**
@@ -57,10 +57,17 @@ contract ShoppingMall is IShoppingMall {
 
         //@dev - NOTE: Before executin this method, a tenant user must get USD/ETH price (by using Chainlink Price Feed)
         //@dev - A tenant user pay a tenant fee for rent in ETH
-        //int256 tenantSpaceNFTPriceInEth = priceConsumerV3.getLatestPrice()
+        //int256 tenantSpaceNFTPriceInEth = getPriceFeedETHPerUSD()
         uint feeForRentInEth = msg.value;
         //address payable tenantOwner = tenantSpaceNFT.ownerOf(tenantSpaceId);
         tenantOwner.transfer(feeForRentInEth);
+    }
+
+    /**
+     * @notice - Get a price feed of ETH price (per USD) by using Chainlink Price Feed
+     */ 
+    function getPriceFeedETHPerUSD() public view returns (int256 _ethPricePerUsd) {
+        return priceConsumerV3.getLatestPrice();
     }
 
 

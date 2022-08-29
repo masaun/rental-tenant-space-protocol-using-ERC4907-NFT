@@ -21,10 +21,20 @@ import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 export interface ShoppingMallInterface extends utils.Interface {
   contractName: "ShoppingMall";
   functions: {
+    "getPriceFeedETHPerUSD()": FunctionFragment;
+    "priceConsumerV3()": FunctionFragment;
     "rentTenantSpaceNFT(address,uint256,address,address,uint64)": FunctionFragment;
     "storeTenantSpaceNFT(address,uint256)": FunctionFragment;
   };
 
+  encodeFunctionData(
+    functionFragment: "getPriceFeedETHPerUSD",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "priceConsumerV3",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "rentTenantSpaceNFT",
     values: [string, BigNumberish, string, string, BigNumberish]
@@ -34,6 +44,14 @@ export interface ShoppingMallInterface extends utils.Interface {
     values: [string, BigNumberish]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "getPriceFeedETHPerUSD",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "priceConsumerV3",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "rentTenantSpaceNFT",
     data: BytesLike
@@ -74,6 +92,12 @@ export interface ShoppingMall extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    getPriceFeedETHPerUSD(
+      overrides?: CallOverrides
+    ): Promise<[BigNumber] & { _ethPricePerUsd: BigNumber }>;
+
+    priceConsumerV3(overrides?: CallOverrides): Promise<[string]>;
+
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
@@ -89,6 +113,10 @@ export interface ShoppingMall extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
+
+  getPriceFeedETHPerUSD(overrides?: CallOverrides): Promise<BigNumber>;
+
+  priceConsumerV3(overrides?: CallOverrides): Promise<string>;
 
   rentTenantSpaceNFT(
     tenantSpaceNFT: string,
@@ -106,6 +134,10 @@ export interface ShoppingMall extends BaseContract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
+    getPriceFeedETHPerUSD(overrides?: CallOverrides): Promise<BigNumber>;
+
+    priceConsumerV3(overrides?: CallOverrides): Promise<string>;
+
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
@@ -125,6 +157,10 @@ export interface ShoppingMall extends BaseContract {
   filters: {};
 
   estimateGas: {
+    getPriceFeedETHPerUSD(overrides?: CallOverrides): Promise<BigNumber>;
+
+    priceConsumerV3(overrides?: CallOverrides): Promise<BigNumber>;
+
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
@@ -142,6 +178,12 @@ export interface ShoppingMall extends BaseContract {
   };
 
   populateTransaction: {
+    getPriceFeedETHPerUSD(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    priceConsumerV3(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     rentTenantSpaceNFT(
       tenantSpaceNFT: string,
       tenantSpaceId: BigNumberish,
