@@ -34,13 +34,13 @@ contract ShoppingMall is IShoppingMall {
     // }
 
     /**
-     * @notice - A tenant owner store a tenant space NFT for rent in a Shopping Mall
+     * @notice - A tenant owner store a tenant space NFT for rent on the Shopping Mall contract
      * @dev - Caller is a owner who has a owner role of tenant space NFT
      */
     function storeTenantSpaceNFT(ITenantSpaceNFT tenantSpaceNFT, uint tenantSpaceId) public override returns (uint) {
         //@dev - NOTE: A owner of TenantSpaceNFT must approve this contract before transferring its TenantSpaceNFT
-        address owner = msg.sender;
-        tenantSpaceNFT.transferFrom(owner, address(this), tenantSpaceId);
+        address tenantOwner = msg.sender;
+        tenantSpaceNFT.transferFrom(tenantOwner, address(this), tenantSpaceId);
     }
 
     /**
