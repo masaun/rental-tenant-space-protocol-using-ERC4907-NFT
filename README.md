@@ -1,7 +1,14 @@
 # Rental Tenant Space Protocol using ERC4907-based Rentable NFT
 
 ## Overview
-- This is a smart contract protocol that allow owners to rent users who want to use tenant spaces in shopping malls by using ERC4907-based rentable NFT.
+- This is a smart contract protocol that allow tenant owners to rent users who want to use tenant spaces in shopping malls by using ERC4907-based rentable NFT.
+
+- Tenant space NFTs is tokenized-tenant spaces that represent tenant spaces. 
+  - That makes renting tenant spaces more efficient.
+
+- ERC4907 (Rentable NFT Standard) is used for Tenant space NFTs.
+  - By utilzing ERC4907, tenant space owners can rent users tenant spaces without transferring its tenant space NFTs by giving `"user rights"` to users who rent tenant spaces. This workflow is more gas-efficient and simple.
+
 
 <br>
 
@@ -13,6 +20,7 @@
 ## Specifications
 - ERC4907 (Rentable NFT Standard) is used for a tenant space NFT.
 - Chainlink Price Feed is used in the ShoppingMall.sol for retrieving ETH/USD price. This price retrieved is used for payment when a tenant space NFT is rent.
+  - When a user rent a tenant space NFT
 
 <br>
 
