@@ -186,8 +186,8 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               const tenantSpaceId = 0
 
               //@dev - Retrieve ETH/USD price via Chainlink's price feed
-              let priceInETHPerUSD = await shoppingMall.getPriceFeedETHPerUSD()
-              console.log(`Price in ETH per USD (via Chainlink PriceFeed): ${ priceInETHPerUSD }`)
+              let priceInETHPerUSD: BigNumber = await shoppingMall.getPriceFeedETHPerUSD()
+              console.log(`Price in ETH per USD (via Chainlink PriceFeed): ${ fromWei(priceInETHPerUSD) } ETH`)
               let feeForRentInEth = priceInETHPerUSD
 
               //@dev - Calculate expiration period
