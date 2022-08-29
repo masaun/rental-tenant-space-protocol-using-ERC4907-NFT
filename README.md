@@ -1,4 +1,4 @@
-# Chainlink Encode Hack (NOTE: Temporary Project Name)
+# Rental Tenant Space Protocol using ERC4907-based Rentable NFT
 
 ## Test (Mainnet-forking test)
 - Unit test of the ShoppingMall.sol
