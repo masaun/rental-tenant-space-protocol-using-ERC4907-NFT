@@ -30,9 +30,15 @@
 
 <br>
 
+## Workflow
+- This is a diagram that entire workflow is written.  
+  ![diagram_Rental-Tenant Space-Protocol-using-ERC4907-based-Rentable-NFT](https://user-images.githubusercontent.com/19357502/187453055-b61ddcfd-dc28-4981-aef7-1d767fd60769.jpeg)
+
+<br>
+
 ## Specifications (Integrations)
 - ERC4907 (Rentable NFT Standard) is used for a tenant space NFT.
-- Chainlink Price Feed is used in the ShoppingMall.sol for retrieving ETH/USD price. This price retrieved is used for payment when a tenant space NFT is rent.
+- Chainlink Price Feed is used as the PriceConsumerV3.sol in the ShoppingMall.sol for retrieving ETH/USD price. This price retrieved is used for payment when a tenant space NFT is rent.
   - When a user rent a tenant space NFT
 
 <br>
