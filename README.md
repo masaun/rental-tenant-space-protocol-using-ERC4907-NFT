@@ -32,7 +32,7 @@
 
 ## Workflow
 - This is a diagram that entire workflow is written.  
-  ![diagram_Rental-Tenant Space-Protocol-using-ERC4907-based-Rentable-NFT](https://user-images.githubusercontent.com/19357502/187453055-b61ddcfd-dc28-4981-aef7-1d767fd60769.jpeg)
+  ![diagram_Rental-Tenant Space-Protocol-using-ERC4907-based-Rentable-NFT](https://user-images.githubusercontent.com/19357502/187455490-2122b67e-e162-4e60-a230-36f77c4e4498.jpeg)
 
 <br>
 
