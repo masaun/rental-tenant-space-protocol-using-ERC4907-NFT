@@ -158,31 +158,34 @@ import { fromWei } from "../ethersjs-helper/ethersjsHelper"
               //@dev - Calculate expiration period
               const expires = Math.floor(new Date().getTime()/1000) + 1000
               const _tenantOwner: string = await tenantSpaceNFT.ownerOf(tenantSpaceId);
-              const _tenantUser: string = await tenantSpaceNFT.userOf(tenantSpaceId);
+              const _tenantUser: string = TENANT_USER_1
+              //const _tenantUser: string = await tenantSpaceNFT.userOf(tenantSpaceId);
               let tx2: ContractTransaction = await shoppingMall.connect(tenantUser1).rentTenantSpaceNFT(TENANT_SPACE_NFT, tenantSpaceId, _tenantOwner, _tenantUser, expires, { value: feeForRentInEth })
           })
 
           it(`userOf() - tenantUser1 should has a user role of TenantSpaceNFT`, async () => {
               const tenantSpaceId = 0
               let walletAddressThatHasUserRole = await tenantSpaceNFT.userOf(tenantSpaceId)
-              // console.log(`Wallet address that has a user role of TenantSpaceNFT after renting a tenant space: ${ walletAddressThatHasUserRole }`)
+              console.log(`Address that has a user role of TenantSpaceNFT after renting a tenant space: ${ walletAddressThatHasUserRole }`)
 
-              // assert.equal(
-              //     walletAddressThatHasUserRole,
-              //     TENANT_USER_1,
-              //     "tenantUser1 should has a user role of TenantSpaceNFT"
-              // )
+              assert.equal(
+                  walletAddressThatHasUserRole,
+                  TENANT_USER_1,
+                  "tenantUser1 should has a user role of TenantSpaceNFT"
+              )
           })
 
-          it(`ownerOf() - tenantOwner1 should has a owner role of TenantSpaceNFT`, async () => {
+          it(`ownerOf() - The ShoppingMall contract should has a owner role of TenantSpaceNFT (on behalf of tenantOwner1)`, async () => {
               const tenantSpaceId = 0
               let walletAddressThatHasOwnerRole = await tenantSpaceNFT.ownerOf(tenantSpaceId)
-              // console.log(`Wallet address that has a owner role of TenantSpaceNFT: ${ walletAddressThatHasOwnerRole }`)
-              // assert.equal(
-              //     walletAddressThatHasOwnerRole,
-              //     TENANT_OWNER_1,
-              //     "tenantOwner1 should has a owner role of TenantSpaceNFT"
-              // )
+              console.log(`Address that has a owner role of TenantSpaceNFT: ${ walletAddressThatHasOwnerRole }`)
+              
+              assert.equal(
+                  walletAddressThatHasOwnerRole,
+                  SHOPPING_MALL,
+                  //TENANT_OWNER_1,
+                  "The ShoppingMall contract should has a owner role of TenantSpaceNFT (on behalf of tenantOwner1"
+              )
           })
 
 
