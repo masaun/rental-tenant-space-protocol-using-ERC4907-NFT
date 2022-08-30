@@ -4,21 +4,22 @@
 - This is a smart contract protocol that allow tenant owners to rent users who want to use tenant spaces in shopping malls by using ERC4907-based rentable NFT.
 
 <br>
-
-- This protocol assume use cases such as:
-  - Gaming that deal with shopping malls as real estates like decentraland.
-  - Shopping malls in real world.
-
-<br>
 - Tenant space NFTs is tokenized-tenant spaces that represent tenant spaces. 
   - That makes renting tenant spaces more efficient.
 
 <br>
 
 - ERC4907 (Rentable NFT Standard) is used for tenant space NFTs in this protocol.
-  - By utilzing ERC4907, owners can rent users tenant spaces by giving `"user rights" instead of transferring its tenant space NFTs into users.`
+  - By utilzing ERC4907 in this protocol, owners can rent users tenant spaces by giving `"user rights" instead of transferring its tenant space NFTs into users.`
   - This workflow makes procesure of renting tenant spaces more transparent who has rights of tenant spaces.
   (NOTE: In this protocol, owners store their tenant space NFTs into the ShoppingMall contract. Then, the ShoppingMall contract rent users tenant space NFTs on behalf of owners)
+
+<br>
+
+## Use cases
+- This protocol assume use cases such as:
+  - The gaming space: Build shopping malls and rent its tenant space. Decentraland like gaming protocol and dApp are potencially able to integrate with this protocol.
+  - The real world: Ultimetory, physical shopping malls might be able to be integrated with this protocol for renting its tenant spaces in the future.
 
 
 <br>
