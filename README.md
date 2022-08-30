@@ -38,7 +38,7 @@
 
 ## Specifications (Integrations)
 - ERC4907 (Rentable NFT Standard) is used for a tenant space NFT.
-- Chainlink Price Feed is used as the PriceConsumerV3.sol in the ShoppingMall.sol for retrieving ETH/USD price. This price retrieved is used for payment when a tenant space NFT is rent.
+- [Chainlink Price Feed](https://docs.chain.link/docs/ethereum-addresses/#Rinkeby%20Testnet%20(Deprecated)) is used as the PriceConsumerV3.sol in the ShoppingMall.sol for retrieving ETH/USD price. This price retrieved is used for payment when a tenant space NFT is rent.
   - When a user rent a tenant space NFT
 
 <br>
@@ -80,7 +80,10 @@ yarn test-unit:ERC4907Demo
 <br>
 
 ## Resources
-- [Chainlink Documentation](https://docs.chain.link/)  
+- Chainlink
+  - Price Feed on Rinkeby (such as ETH/USD): https://docs.chain.link/docs/ethereum-addresses/#Rinkeby%20Testnet%20(Deprecated)
+
+<br>
 
 - ERC-4907：Rentable NFT standard   
   - Features：https://twitter.com/zetablockchain/status/1554863652104245253?s=21&t=_sJhuiNQkth5jP4QRu4oTA  
