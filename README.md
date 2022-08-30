@@ -3,7 +3,9 @@
 ## Overview
 - This is a smart contract protocol that allow tenant owners to rent users who want to use tenant spaces in shopping malls by using ERC4907-based rentable NFT.
 
-- Use cases that this protocol are:
+<br>
+
+- This protocol assume use cases such as:
   - Gaming that deal with shopping malls as real estates like decentraland.
   - Shopping malls in real world.
 
@@ -13,8 +15,10 @@
 
 <br>
 
-- ERC4907 (Rentable NFT Standard) is used for Tenant space NFTs.
-  - By utilzing ERC4907, tenant space owners can rent users tenant spaces without transferring its tenant space NFTs by giving `"user rights"` to users who rent tenant spaces. This workflow is more gas-efficient and simple.
+- ERC4907 (Rentable NFT Standard) is used for tenant space NFTs in this protocol.
+  - By utilzing ERC4907, owners can rent users tenant spaces by giving `"user rights" instead of transferring its tenant space NFTs into users.`
+  - This workflow makes procesure of renting tenant spaces more transparent who has rights of tenant spaces.
+  (NOTE: In this protocol, owners store their tenant space NFTs into the ShoppingMall contract. Then, the ShoppingMall contract rent users tenant space NFTs on behalf of owners)
 
 
 <br>
@@ -24,7 +28,7 @@
 
 <br>
 
-## Specifications
+## Specifications (Integrations)
 - ERC4907 (Rentable NFT Standard) is used for a tenant space NFT.
 - Chainlink Price Feed is used in the ShoppingMall.sol for retrieving ETH/USD price. This price retrieved is used for payment when a tenant space NFT is rent.
   - When a user rent a tenant space NFT
@@ -68,11 +72,12 @@ yarn test-unit:ERC4907Demo
 <br>
 
 ## Resources
-- [Chainlink Documentation](https://docs.chain.link/)
+- [Chainlink Documentation](https://docs.chain.link/)  
 
-- ERC-4907：Rentable NFT standard  
+- ERC-4907：Rentable NFT standard   
   - Features：https://twitter.com/zetablockchain/status/1554863652104245253?s=21&t=_sJhuiNQkth5jP4QRu4oTA  
-    - Demo SC & Test：https://eips.ethereum.org/EIPS/eip-4907  
-      - Code / EIP-4907 Demo：https://github.com/emojidao/EIP4907  
-        - (double-contract： https://github.com/emojidao/double-contract )  
-      - Workflow：https://ethereum-magicians.org/t/eip4907-erc-721-user-and-expires-extension/8572/2  
+  - Workflow：https://ethereum-magicians.org/t/eip4907-erc-721-user-and-expires-extension/8572/2   
+  - Demo SC & Test：https://eips.ethereum.org/EIPS/eip-4907   
+   - Code / EIP-4907 Demo：https://github.com/emojidao/EIP4907   
+   - double-contract： https://github.com/emojidao/double-contract  
+
