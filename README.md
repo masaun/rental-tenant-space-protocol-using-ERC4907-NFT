@@ -4,6 +4,7 @@
 - This is a smart contract protocol that allow tenant owners to rent users who want to use tenant spaces in shopping malls by using ERC4907-based rentable NFT.
 
 <br>
+
 - Tenant space NFTs is tokenized-tenant spaces that represent tenant spaces. 
   - That makes renting tenant spaces more efficient.
 
@@ -37,7 +38,7 @@
 <br>
 
 ## Test (Rinkeby testnet-forking test)
-- Unit test of the ShoppingMall.sol
+- Unit test of the ShoppingMall.sol (NOTE: This test is the main test that includes entire workflow of this protocol)
 ```
 yarn test-unit:ShoppingMall
 ```
